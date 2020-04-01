@@ -1,3 +1,21 @@
 
+<div class='demo-header'>
+  <button kendoButton icon="menu" look="flat" styles="font-size: 24px;" (click)="drawer.toggle()"></button>
+</div>
+<kendo-drawer-container>
+  <kendo-drawer #drawer
+                [items]="items"
+                [width]="250"
+                [mode]="'push'"
+                [(expanded)]="expanded">
+    <ng-template kendoDrawerItemTemplate let-item>
+      <div class="k-drawer-link" [routerLink]="item.path">
+        <span>{{ item.text }}</span>
+      </div>
+    </ng-template>
+  </kendo-drawer>
 
-<router-outlet></router-outlet>
+  <kendo-drawer-content>
+    <router-outlet></router-outlet>
+  </kendo-drawer-content>
+</kendo-drawer-container> 

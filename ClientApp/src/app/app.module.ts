@@ -7,7 +7,13 @@ import { AppSettings } from './app.settings';
 import { appSettingsFactory } from './app.settings.factory';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+import { MaterialModule } from './shared/material.module';
+import { HomeComponent } from './modules/home/pages/home/home.component';
+import { HomeModule } from './modules/home/home.module';
+ 
 
 
 @NgModule({
@@ -22,15 +28,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule.forRoot([
       {
         path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'about',
         loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
       },
+      
 
     ]),
     HttpClientModule,
     FormsModule,
    
-    SharedModule
-    //HomeModule
+    SharedModule,
+    MaterialModule,
+    BsDropdownModule.forRoot(),
+   
+    LayoutModule,
+    HomeModule
   ],
   providers: [
     {

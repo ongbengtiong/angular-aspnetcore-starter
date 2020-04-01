@@ -1,8 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'MetricLight';
+  src: url('/assets/fonts/metric/MetricLight.woff') format('woff');
+}
+@font-face {
+  font-family: 'MetricMedium';
+  src: url('/assets/fonts/metric/MetricMedium.woff') format('woff');
+}
+@font-face {
+  font-family: 'MetricRegular';
+  src: url('/assets/fonts/metric/MetricRegular.woff') format('woff');
+} 
+
 
 html,
 body {
-  height: 100%;
+  height: 100%;  
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: MetricRegular;
 }
 
 /* Provide sufficient contrast against white background */
