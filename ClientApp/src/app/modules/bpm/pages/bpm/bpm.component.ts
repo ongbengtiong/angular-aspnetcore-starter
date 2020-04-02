@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Modeler, OriginalPropertiesProvider, PropertiesPanelModule, InjectionNames, OriginalPaletteProvider } from "../../models/bpmn-js/bpmn-js";
 import { CustomPropsProvider } from '../../models/props-provider/CustomPropsProvider';
 import { CustomPaletteProvider } from '../../models/props-provider/CustomPaletteProvider';
+import { faFolderOpen, faSave } from '@fortawesome/free-solid-svg-icons';
+
 
 const customModdle = {
   name: "customModdle",
@@ -37,6 +39,9 @@ const customModdle = {
 export class BpmComponent implements OnInit {
   title = 'Angular/BPMN';
   modeler;
+
+  faFolderOpen = faFolderOpen;
+  faSave = faSave;
 
   constructor(private http: HttpClient) {
   }
@@ -73,7 +78,7 @@ export class BpmComponent implements OnInit {
   }
 
   load(): void {
-    const url = '/assets/bpmn/initial.bpmn';
+    const url = '/assets/bpmn/sample.bpmn';
     this.http.get(url, {
       headers: { observe: 'response' }, responseType: 'text'
     }).subscribe(

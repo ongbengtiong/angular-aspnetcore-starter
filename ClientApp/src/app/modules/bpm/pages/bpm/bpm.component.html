@@ -2,8 +2,8 @@
 
 
 
-<button (click)="load()">Load <i class="fa fa-folder-open"></i></button>
-<button (click)="save()">Save <i class="fa fa-save"></i></button>
+<button type="button" class="btn btn-primary" (click)="load()">Load <fa-icon [icon]="faFolderOpen"></fa-icon></button>
+<button type="button" class="btn btn-primary" (click)="save()">Save <fa-icon [icon]="faSave"></fa-icon> </button>
 
 <div class="modeler">
   <div class="d-md-flex h-md-100 align-items-start">
@@ -18,7 +18,7 @@
 
     <!-- Second Half -->
 
-    <div class="col-md-4 p-0 bg-white h-md-100 " style="background-color: #f8f8f8">
+    <div class="col-md-4 p-0 bg-white h-md-100">
 
       <div id="properties" class="align-top"></div>
 

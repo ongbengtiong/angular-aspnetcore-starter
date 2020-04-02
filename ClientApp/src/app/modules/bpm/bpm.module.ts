@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './../../shared/shared.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule, Routes } from '@angular/router';
@@ -34,7 +33,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     SharedModule,
     BsDropdownModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ],
   entryComponents: [
 
