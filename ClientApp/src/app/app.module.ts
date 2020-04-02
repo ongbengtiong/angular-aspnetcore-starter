@@ -19,7 +19,7 @@ import { catchError, map } from 'rxjs/operators';
 import { of, Observable, ObservableInput } from 'rxjs';
 import { ConfigService } from './shared/services/config.service';
 
-function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
+export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
     return new Promise<boolean>((resolve: (a: boolean) => void): void => {
       http.get('./config')
