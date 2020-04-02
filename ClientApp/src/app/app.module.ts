@@ -1,7 +1,7 @@
 //import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppSettings } from './app.settings';
 import { appSettingsFactory } from './app.settings.factory';
@@ -15,8 +15,31 @@ import { HomeComponent } from './modules/home/pages/home/home.component';
 import { HomeModule } from './modules/home/home.module';
 import { BackgroundComponent } from './modules/home/components/background/background.component';
 import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-data.component';
+import { catchError, map } from 'rxjs/operators';
+import { of, Observable, ObservableInput } from 'rxjs';
+import { ConfigService } from './shared/services/config.service';
 
-
+function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
+  return (): Promise<boolean> => {
+    return new Promise<boolean>((resolve: (a: boolean) => void): void => {
+      http.get('./config')
+        .pipe(
+          map((x: ConfigService) => {
+            config.baseUrl = x.baseUrl;
+            resolve(true);
+          }),
+          catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
+            if (x.status !== 404) {
+              resolve(false);
+            }
+            config.baseUrl = 'http://localhost:8080/api';
+            resolve(true);
+            return of({});
+          })
+        ).subscribe();
+    });
+  };
+}
 
 @NgModule({
   declarations: [
@@ -62,6 +85,15 @@ import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-d
       provide: AppSettings,
       useFactory: appSettingsFactory(),
       multi: false
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: load,
+      deps: [
+        HttpClient,
+        ConfigService
+      ],
+      multi: true
     }],
   bootstrap: [AppComponent]
 })
