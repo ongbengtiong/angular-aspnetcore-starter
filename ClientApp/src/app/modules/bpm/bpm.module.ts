@@ -7,19 +7,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from './../../shared/shared.module';
-import { AboutComponent } from './pages/about/about.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { IntroComponent } from './components/intro/intro.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
+import { BpmComponent } from './pages/bpm/bpm.component';
+import { ModelerComponent } from './components/modeler/modeler.component';
+import { MaterialModule } from '../../shared/material.module';
 
 
 const routes: Routes = [
   {
-    path: '', component: AboutComponent, children: [
-      { path: '', component: IntroComponent },
-      { path: 'counter', component: CounterComponent },
+    path: '', component: BpmComponent, children: [
+      { path: '', component: ModelerComponent },
+      { path: 'modeler', component: ModelerComponent },
     ]
   }
 ];
@@ -27,16 +26,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AboutComponent,
-    CounterComponent,
-    IntroComponent
+    BpmComponent,
+    ModelerComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     SharedModule,
     BsDropdownModule,
-    LayoutModule
+    MaterialModule
   ],
   entryComponents: [
 
@@ -45,4 +43,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AboutModule { }
+export class BpmModule { }

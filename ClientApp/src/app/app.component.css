@@ -11,4 +11,5 @@ html {
 
 main {
   padding-top: 75px; /* avoid overlapping header*/
+  padding-bottom: 75px; /* avoid overlapping footer*/
 }

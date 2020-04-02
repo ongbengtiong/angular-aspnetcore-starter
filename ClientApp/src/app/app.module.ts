@@ -41,8 +41,10 @@ import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-d
       {
         path: 'about',
         loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
+      }, {
+        path: 'bpm',
+        loadChildren: () => import('./modules/bpm/bpm.module').then(m => m.BpmModule)
       },
-
 
     ]),
     HttpClientModule,
