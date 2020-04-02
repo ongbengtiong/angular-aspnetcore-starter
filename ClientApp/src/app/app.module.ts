@@ -13,7 +13,9 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { MaterialModule } from './shared/material.module';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { HomeModule } from './modules/home/home.module';
- 
+import { BackgroundComponent } from './modules/home/components/background/background.component';
+import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-data.component';
+
 
 
 @NgModule({
@@ -22,28 +24,34 @@ import { HomeModule } from './modules/home/home.module';
 
   ],
   imports: [
-   // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
 
     BrowserAnimationsModule,
     RouterModule.forRoot([
+
       {
         path: '',
-        component: HomeComponent
+        //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+        component: HomeComponent, children: [
+          { path: '', component: BackgroundComponent },
+          { path: 'background', component: BackgroundComponent },
+          { path: 'fetch-data', component: FetchDataComponent }
+        ]
       },
       {
         path: 'about',
         loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
       },
-      
+
 
     ]),
     HttpClientModule,
     FormsModule,
-   
+
     SharedModule,
     MaterialModule,
     BsDropdownModule.forRoot(),
-   
+
     LayoutModule,
     HomeModule
   ],

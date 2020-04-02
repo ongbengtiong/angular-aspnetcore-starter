@@ -11,27 +11,40 @@ import { HomeComponent } from './pages/home/home.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
+import { BackgroundComponent } from './components/background/background.component';
+import { MaterialModule } from '../../shared/material.module';
 
 
-const routes: Routes = [ 
-  { path: '', component: HomeComponent }
+ 
+const routes: Routes = [
+  {
+    path: '', component: HomeComponent, children: [
+      { path: '', component: BackgroundComponent },
+      { path: 'background', component: BackgroundComponent },
+      { path: 'fetch-data', component: FetchDataComponent }
+    ]
+  }
 ];
-
 
 @NgModule({
   declarations: [
     HomeComponent,
+    FetchDataComponent,
+    BackgroundComponent,
   ],
   imports: [
     // BrowserAnimationsModule,
     // CommonModule,
     // FontAwesomeModule,
     // FormsModule,
-    RouterModule.forChild(routes),
+    //RouterModule.forChild(routes),
     ReactiveFormsModule,
     SharedModule,
+    MaterialModule,
     BsDropdownModule,
-    LayoutModule
+    LayoutModule,
+    RouterModule
   ],
   entryComponents: [
 

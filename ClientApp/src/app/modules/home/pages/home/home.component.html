@@ -1,1 +1,9 @@
-Lorem ipsum dolor sit amet, a metus arcu, nulla semper, pharetra quam cum, orci purus. Sed interdum ut nec nulla, orci sagittis tincidunt duis cras, tristique nonummy eros. Aenean neque. Sagittis est morbi tellus pharetra, suspendisse quam ipsum vulputate non viverra. Morbi at a dignissim tristique et suspendisse, volutpat vestibulum amet. Suspendisse metus magnis semper rutrum, sed sagittis porta, nulla accumsan fusce, nunc et dictumst pharetra. Sed nunc enim, est est venenatis, at cum odio eu massa suscipit tincidunt, sapien at tempus magna vestibulum felis commodo. Fusce blandit elit pede pellentesque aliquet aliquam, blandit fusce felis ac non sed lacus. Potenti vestibulum lobortis sed felis purus leo, tristique tellus, fringilla urna eu pede ac commodo, ante sem id in. Turpis id sapien dictumst, vitae est facilisis delectus semper mattis, fringilla sed ut vestibulum lectus dui, sed feugiat curabitur amet et aliquam nostra.
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer [mode]="'side'">I'm a drawer</mat-drawer>
+  <mat-drawer-content>
+
+    <router-outlet></router-outlet>
+
+    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+  </mat-drawer-content>
+</mat-drawer-container>
