@@ -18,6 +18,10 @@ import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-d
 import { catchError, map } from 'rxjs/operators';
 import { of, Observable, ObservableInput } from 'rxjs';
 import { ConfigService } from './shared/services/config.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
+import { StoreModule } from '@ngrx/store';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -78,7 +82,10 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     BsDropdownModule.forRoot(),
 
     LayoutModule,
-    HomeModule
+    HomeModule,
+    FontAwesomeModule,
+    EntityDataModule.forRoot(entityConfig),
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     {
