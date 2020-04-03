@@ -18,6 +18,12 @@ import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-d
 import { catchError, map } from 'rxjs/operators';
 import { of, Observable, ObservableInput } from 'rxjs';
 import { ConfigService } from './shared/services/config.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EntityEffects } from './modules/entity/store/entity.effect';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -64,9 +70,14 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
       {
         path: 'about',
         loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
-      }, {
+      },
+      {
         path: 'bpm',
         loadChildren: () => import('./modules/bpm/bpm.module').then(m => m.BpmModule)
+      },
+      {
+        path: 'entity',
+        loadChildren: () => import('./modules/entity/entity.module').then(m => m.EntityModule)
       },
 
     ]),
@@ -78,7 +89,19 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     BsDropdownModule.forRoot(),
 
     LayoutModule,
-    HomeModule
+    HomeModule, 
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([EntityEffects]),
   ],
   providers: [
     {
