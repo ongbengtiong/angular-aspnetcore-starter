@@ -1,21 +1,21 @@
 <h3>{{title}}</h3> 
 <form [formGroup]="entityForm">
-  <div>
+  <div class="form-group">
     <label for="id">ID:</label>&nbsp;
-    <input [readonly]="isEdit" id="id" formControlName="id" />
+    <input [readonly]="isEdit" id="id" class="form-control" formControlName="id" />
   </div>
   <br />
-  <div>
+  <div class="form-group">
     <label for="name">Name:</label>&nbsp;
-    <input id="name" formControlName="name" />
+    <input id="name" class="form-control" formControlName="name" />
   </div>
   <br />
-  <div>
+  <div class="form-group">
     <label for="code">Code:</label>&nbsp;
-    <input id="code" formControlName="code" />
+    <input id="code" class="form-control" formControlName="code" />
   </div>
   <br />
   <div>
-    <button (click)="save()">Save</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
   </div>
 </form>

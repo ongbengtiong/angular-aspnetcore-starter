@@ -1,10 +1,27 @@
 <h3>{{title}}</h3>
 
 
-<div *ngFor="let entity of (entities$ | async)">
-  <p>
-    Entity Id: {{entity.id}} | Name: {{entity.name}} | Code: {{entity.code}} |
-    <a [routerLink]="['edit', entity.id]">Edit</a> |
-    <a href="javascript:void(0)" (click)="delete(entity.id)">Delete</a>
-  </p>
-</div>
+ 
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="entities$">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entity of (entities$ | async)">
+      <td>{{entity.id}}</td>
+      <td>{{entity.name}}</td>
+      <td>{{entity.code}}</td>
+      <td>
+        <a [routerLink]="['edit', entity.id]">Edit</a> |
+        <a href="javascript:void(0)" (click)="delete(entity.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
