@@ -3,6 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { WeatherForecast } from '../models/weatherForecast';
 
 
 

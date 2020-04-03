@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { WeatherService } from '../../services/weather.service';
+import { WeatherForecast } from '../../models/weatherForecast';
 
 @Component({
   selector: 'app-fetch-data',
