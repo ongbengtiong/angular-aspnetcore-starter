@@ -23,7 +23,7 @@ import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EntityEffects } from './modules/entity/store/entity.effect';
+import { EntityEffects } from './modules/entity/store/effect';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -76,7 +76,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
         loadChildren: () => import('./modules/bpm/bpm.module').then(m => m.BpmModule)
       },
       {
-        path: 'entity',
+        path: 'entities',
         loadChildren: () => import('./modules/entity/entity.module').then(m => m.EntityModule)
       },
 
