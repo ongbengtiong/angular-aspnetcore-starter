@@ -8,14 +8,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './../../shared/shared.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule, Routes } from '@angular/router';
-import { BpmComponent } from './pages/bpm/bpm.component';
+import { BpmPage } from './pages/bpm/bpm.page';
 import { ModelerComponent } from './components/modeler/modeler.component';
 import { MaterialModule } from '../../shared/material.module';
 
 
 const routes: Routes = [
   {
-    path: '', component: BpmComponent, children: [
+    path: '', component: BpmPage, children: [
       { path: '', component: ModelerComponent },
       { path: 'modeler', component: ModelerComponent },
     ]
@@ -25,7 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    BpmComponent,
+    BpmPage,
     ModelerComponent,
   ],
   imports: [

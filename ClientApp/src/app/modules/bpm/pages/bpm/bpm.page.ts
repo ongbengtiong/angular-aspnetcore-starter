@@ -32,11 +32,11 @@ const customModdle = {
 };
 
 @Component({
-  selector: 'app-bpm',
-  templateUrl: './bpm.component.html',
-  // styleUrls: ['./bpm.component.css']
+  selector: 'bpm-page',
+  templateUrl: './bpm.page.html',
+  // styleUrls: ['./bpm.page.css']
 })
-export class BpmComponent implements OnInit {
+export class BpmPage implements OnInit {
   title = 'Angular/BPMN';
   modeler;
 

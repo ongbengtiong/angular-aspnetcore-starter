@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from './../../shared/shared.module';
-import { AboutComponent } from './pages/about/about.component';
+import { AboutPage} from './pages/about/about.page';
 import { CounterComponent } from './components/counter/counter.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -17,7 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', component: AboutComponent, children: [
+    path: '', component: AboutPage, children: [
       { path: '', component: IntroComponent },
       { path: 'counter', component: CounterComponent },
     ]
@@ -27,7 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AboutComponent,
+    AboutPage,
     CounterComponent,
     IntroComponent
   ],

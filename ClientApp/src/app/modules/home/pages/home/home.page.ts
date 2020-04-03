@@ -2,9 +2,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
  
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html' 
+  selector: 'home-page',
+  templateUrl: './home.page.html' 
 })
-export class HomeComponent {
+export class HomePage {
  
 }

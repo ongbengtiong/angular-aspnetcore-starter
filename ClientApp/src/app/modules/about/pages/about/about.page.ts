@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
  
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
+  selector: 'about-page',
+  templateUrl: './about.page.html',
   encapsulation: ViewEncapsulation.None,
   styles: [`
         my-app { padding: 0 }
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
         }
     `]
 })
-export class AboutComponent {
+export class AboutPage {
   public expanded = false;
   public items: Array<any> = [];
 

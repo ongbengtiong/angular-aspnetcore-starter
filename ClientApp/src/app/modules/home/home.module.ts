@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from './../../shared/shared.module';
-import { HomeComponent } from './pages/home/home.component';
+import { HomePage } from './pages/home/home.page';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,7 +19,7 @@ import { MaterialModule } from '../../shared/material.module';
  
 const routes: Routes = [
   {
-    path: '', component: HomeComponent, children: [
+    path: '', component: HomePage, children: [
       { path: '', component: BackgroundComponent },
       { path: 'background', component: BackgroundComponent },
       { path: 'fetch-data', component: FetchDataComponent }
@@ -29,7 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    HomePage,
     FetchDataComponent,
     BackgroundComponent,
   ],

@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { MaterialModule } from './shared/material.module';
-import { HomeComponent } from './modules/home/pages/home/home.component';
+import { HomePage } from './modules/home/pages/home/home.page';
 import { HomeModule } from './modules/home/home.module';
 import { BackgroundComponent } from './modules/home/components/background/background.component';
 import { FetchDataComponent } from './modules/home/components/fetch-data/fetch-data.component';
@@ -61,7 +61,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
       {
         path: '',
         //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
-        component: HomeComponent, children: [
+        component: HomePage, children: [
           { path: '', component: BackgroundComponent },
           { path: 'background', component: BackgroundComponent },
           { path: 'fetch-data', component: FetchDataComponent }
