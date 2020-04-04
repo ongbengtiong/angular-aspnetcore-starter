@@ -165,5 +165,8 @@
       }
     }
   },
-  "defaultProject": "my_new_app"
+  "defaultProject": "my_new_app",
+  "cli": {
+    "analytics": false
+  }
 }
