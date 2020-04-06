@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { SidebarModule } from 'primeng/sidebar';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SideBarService } from './components/sidebar/sidebar.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +29,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     HeaderComponent,
     SidebarComponent 
   ],
-
+  providers: [SideBarService]
 })
 export class SharedModule { }

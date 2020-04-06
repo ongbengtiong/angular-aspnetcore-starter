@@ -1,0 +1,28 @@
+<h3>BPMN Modeler</h3>
+
+
+<button type="button" class="btn btn-primary" (click)="new()">New <fa-icon [icon]="faFolderOpen"></fa-icon></button>
+<button type="button" class="btn btn-primary" (click)="load()">Load <fa-icon [icon]="faFolderOpen"></fa-icon></button>
+<button type="button" class="btn btn-primary" (click)="save()">Save <fa-icon [icon]="faSave"></fa-icon> </button>
+
+<div class="modeler">
+  <div class="d-md-flex h-md-100 align-items-start">
+
+    <!-- First Half -->
+
+    <div class="col-md-8 col-lg-9 p-0 bg-indigo h-md-100">
+
+      <div id="canvas" class="border"></div>
+
+    </div>
+
+    <!-- Second Half -->
+
+    <div class="col-md-4 col-lg-3 p-0 bg-white h-md-100">
+
+      <div id="properties" class="align-top"></div>
+
+    </div>
+
+  </div>
+</div>

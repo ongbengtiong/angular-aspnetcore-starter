@@ -9,6 +9,7 @@ FontAwesome
 NGRX 9.0.0
 
 BPMN-JS
+DMN-JS
 
 PrimeNg-Sidebar
 
