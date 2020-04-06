@@ -17,7 +17,7 @@
 
 html,
 body {
-  height: 100%;  
+  min-height: 100%;  
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: MetricRegular;
@@ -36,4 +36,14 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

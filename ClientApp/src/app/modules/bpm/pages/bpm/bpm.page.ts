@@ -76,7 +76,18 @@ export class BpmPage implements OnInit {
       console.warn('Ups, error: ', err);
     }
   }
-
+  new(): void {
+    const url = '/assets/bpmn/initial.bpmn';
+    this.http.get(url, {
+      headers: { observe: 'response' }, responseType: 'text'
+    }).subscribe(
+      (x: any) => {
+        console.log('Fetched XML, now importing: ', x);
+        this.modeler.importXML(x, this.handleError);
+      },
+      this.handleError
+    );
+  }
   load(): void {
     const url = '/assets/bpmn/sample.bpmn';
     this.http.get(url, {

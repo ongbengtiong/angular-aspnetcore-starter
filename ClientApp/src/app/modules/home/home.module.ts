@@ -15,6 +15,7 @@ import { FetchDataComponent } from './components/fetch-data/fetch-data.component
 import { BackgroundComponent } from './components/background/background.component';
 import { MaterialModule } from '../../shared/material.module';
 
+import { SidebarModule } from 'primeng/sidebar'; 
 
  
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
     MaterialModule,
     BsDropdownModule,
     LayoutModule,
+    SidebarModule,
     RouterModule
   ],
   entryComponents: [

@@ -5,15 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+
+import { SidebarModule } from 'primeng/sidebar';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   imports: [
     CommonModule,
    // BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    SidebarModule
   ],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
 
   exports: [
@@ -21,6 +26,7 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule, 
     FooterComponent,
     HeaderComponent,
+    SidebarComponent 
   ],
 
 })
