@@ -1,15 +1,9 @@
 
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
 main {
-  padding-top: 75px; /* avoid overlapping header*/
+  padding-top: 57px; /* avoid overlapping header*/
   padding-bottom: 75px; /* avoid overlapping footer*/
+  /* min-height: calc(100vh - 75px);*/
+  margin-top: 3em;
 }

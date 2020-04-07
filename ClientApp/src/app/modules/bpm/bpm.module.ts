@@ -9,15 +9,17 @@ import { SharedModule } from './../../shared/shared.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule, Routes } from '@angular/router';
 import { BpmPage } from './pages/bpm/bpm.page';
-import { ModelerComponent } from './components/modeler/modeler.component';
+import { BpmnModelerComponent } from './components/bpmn-modeler/bpmn-modeler.component';
 import { MaterialModule } from '../../shared/material.module';
+import { DmnModelerComponent } from './components/dmn-modeler/dmn-modeler.component';
 
 
 const routes: Routes = [
   {
     path: '', component: BpmPage, children: [
-      { path: '', component: ModelerComponent },
-      { path: 'modeler', component: ModelerComponent },
+      { path: '', component: BpmnModelerComponent },
+      { path: 'bpmn-modeler', component: BpmnModelerComponent },
+      { path: 'dmn-modeler', component: DmnModelerComponent },
     ]
   }
 ];
@@ -26,7 +28,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     BpmPage,
-    ModelerComponent,
+    BpmnModelerComponent,
+    DmnModelerComponent
   ],
   imports: [
     RouterModule.forChild(routes),
