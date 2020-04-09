@@ -19,3 +19,14 @@ Issue: https://stackoverflow.com/questions/60189930/timeoutexception-the-angular
 Issue: Generating ES5 bundles for differential loading... An unhandled exception occurred: ...\ClientApp\vendor-es2015.js: 'with' in strict mode (136749:4)
 
 
+TODO:
+- REST with GET, POST, PUT, PATCH, DELETE. JsonPatchDocument
+- REST API with sort, filter and paging
+- REST security
+- REST data shaping
+- REST caching
+- EF Core
+
+ASP.NET Core 
+- Use ViewModel validation
+- UseNodeModules

@@ -44,6 +44,7 @@ namespace my_new_app
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
