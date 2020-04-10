@@ -30,3 +30,12 @@ TODO:
 ASP.NET Core 
 - Use ViewModel validation
 - UseNodeModules
+
+EF:
+- https://app.pluralsight.com/course-player?clipId=a1cd8a69-a4fd-4871-84c9-02a78d60aade
+- Install Nuget EntityFrameworkCore SqlServer, EntityFrameworkCore Design
+- dotnet tool install dotnet-ef -g
+- dotnet ef database update BUT... 
+- Pluralsight tutorial resides DbContext in same project as ASP.NET, so...- https://dotnetthoughts.net/using-ef-core-in-a-separate-class-library/
+- dotnet ef migrations add InitialMigrations --project ..\Domain\Domain.csproj --startup-project .\Web.csproj
+
