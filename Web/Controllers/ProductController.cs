@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace my_new_app.Controllers
+namespace DSO.DotnetCore.Web.Controllers
 {
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
     {
         private readonly DataContext _dataContext;
-        private readonly ILogger<ConfigController> _logger;
+        private readonly ILogger<ProductController> _logger;
+        private readonly IProductRepository _repository;
 
-        public ProductController(ILogger<ConfigController> logger, DataContext dataContext)
+        public ProductController(ILogger<ProductController> logger, DataContext dataContext, IProductRepository productRepository)
         {
             _dataContext = dataContext;
             _logger = logger;
+            _repository = productRepository;
         }
         [HttpPost("{id}")]
         public string Post(int id, object o)
@@ -53,9 +56,20 @@ namespace my_new_app.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var result = _dataContext.Products.OrderBy(p => p.Category).ToList();
-            return Ok(result);
-            //return "GetAll: " + DateTime.Now.ToLongTimeString()  ;
+            try
+            {
+                _logger.LogInformation("GetAll");
+                var result = _repository.GetAll().OrderBy(p => p.Category).ToList();
+                //var result = _dataContext.Products.OrderBy(p => p.Category).ToList();
+                return Ok(result);
+                //return "GetAll: " + DateTime.Now.ToLongTimeString()  ;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return null;
+            }
         }
     }
 }

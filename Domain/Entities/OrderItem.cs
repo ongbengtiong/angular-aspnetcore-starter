@@ -1,4 +1,5 @@
-﻿using DSO.DotnetCore.Domain.Entities;
+﻿using DSO.DotnetCore.Domain.Core.Base;
+using DSO.DotnetCore.Domain.Entities;
 
 namespace DSO.DotnetCore.Domain.Entities
 {

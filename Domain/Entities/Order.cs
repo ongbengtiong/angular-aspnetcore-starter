@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DSO.DotnetCore.Domain.Core.Base;
+using System;
 using System.Collections.Generic;
 
 namespace DSO.DotnetCore.Domain.Entities

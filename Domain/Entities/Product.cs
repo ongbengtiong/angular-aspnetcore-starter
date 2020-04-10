@@ -1,4 +1,5 @@
 ﻿
+using DSO.DotnetCore.Domain.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,4 +1,6 @@
+using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
+using DSO.DotnetCore.Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +30,12 @@ namespace my_new_app
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     assembly => assembly.MigrationsAssembly(typeof(DataContext).Assembly.FullName));
             });
+
+            // to seed data
             services.AddTransient<DataSeeder>();
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

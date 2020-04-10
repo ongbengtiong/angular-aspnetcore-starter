@@ -8,9 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using System.IO;
-using Newtonsoft.Json;
-using DSO.DotnetCore.Domain.Entities;
 
 namespace my_new_app
 {
@@ -31,12 +28,7 @@ namespace my_new_app
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<DataSeeder>();
-                var env = host.Services.GetService<IHostingEnvironment>();
-                var filePath = Path.Combine(env.ContentRootPath, "SeedData/products.json");
-                // var filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SeedData/products.json");
-                var json = File.ReadAllText(filePath);
-                var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
-                seeder.Seed(products);
+                seeder.Seed();
             }
             
         }

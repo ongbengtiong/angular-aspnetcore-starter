@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DSO.DotnetCore.Domain.Entities
+namespace DSO.DotnetCore.Domain.Core.Base
 {
     public class BaseEntity
     {
