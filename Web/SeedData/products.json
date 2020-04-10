@@ -1,0 +1,31 @@
+﻿[
+  {
+    
+    "ArtistBirthDate": "2020-01-01",
+    "Title": "Product-01",
+    "Artist": "Artist-01",
+    "ImageUrl": "https://example.com/sample-01.png"
+  },
+  {
+
+
+    "ArtistBirthDate": "2020-01-02",
+    "Title": "Product-02",
+    "Artist": "Artist-02",
+    "ImageUrl": "https://example.com/sample-02.png"
+  },
+  {
+    
+    "ArtistBirthDate": "2020-01-03",
+    "Title": "Product-03",
+    "Artist": "Artist03",
+    "ImageUrl": "https://example.com/sample-03.png"
+  },
+  {
+    
+    "ArtistBirthDate": "2020-01-04",
+    "Title": "Product-04",
+    "Artist": "Artist04",
+    "ImageUrl": "https://example.com/sample-04.png"
+  }
+]

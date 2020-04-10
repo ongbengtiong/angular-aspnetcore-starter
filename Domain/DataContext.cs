@@ -25,7 +25,7 @@ namespace DSO.DotnetCore.Domain
             {
                 entityType.SetTableName(entityType.DisplayName());
             }
-
+            /*
             _ = modelBuilder.Entity<Product>().HasData(new Product()
             {
                 Id = 1,
@@ -34,6 +34,7 @@ namespace DSO.DotnetCore.Domain
                 Artist = "Artist01",
                 ImageUrl = "https://example.com/sample.png"
             });
+            */
         }
     }
 }
