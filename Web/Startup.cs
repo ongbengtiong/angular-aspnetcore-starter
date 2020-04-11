@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Domain.Repositories;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace my_new_app
 {
@@ -34,7 +36,7 @@ namespace my_new_app
 
             // to seed data
             services.AddTransient<DataSeeder>();
-
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 

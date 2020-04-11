@@ -39,3 +39,6 @@ EF:
 - Pluralsight tutorial resides DbContext in same project as ASP.NET, so...- https://dotnetthoughts.net/using-ef-core-in-a-separate-class-library/
 - dotnet ef migrations add <Name> --project ..\Domain\Domain.csproj --startup-project .\Web.csproj --context DataContext
 - New System.Text.Json does not support many features of Newtonsoft.Json, so we re-install Microsoft.AspNetCore.Mvc.NewtonsoftJson: https://stackoverflow.com/questions/58006152/net-core-3-not-having-referenceloophandling-in-addjsonoptions
+
+AutoMapper:
+ViewModels:

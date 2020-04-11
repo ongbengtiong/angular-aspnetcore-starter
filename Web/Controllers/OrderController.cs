@@ -1,8 +1,11 @@
-﻿using DSO.DotnetCore.Domain.Entities;
+﻿using AutoMapper;
+using DSO.DotnetCore.Domain.Entities;
 using DSO.DotnetCore.Domain.Repositories;
+using DSO.DotnetCore.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace my_new_app.Controllers
@@ -12,11 +15,13 @@ namespace my_new_app.Controllers
     public class OrderController : ControllerBase
     {
         private readonly ILogger<OrderController> _logger;
+        private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
 
-        public OrderController(ILogger<OrderController> logger, IOrderRepository orderRepository)
+        public OrderController(ILogger<OrderController> logger, IMapper mapper, IOrderRepository orderRepository)
         {
             _logger = logger;
+            _mapper = mapper;
             _orderRepository = orderRepository;
         }
 
@@ -26,7 +31,8 @@ namespace my_new_app.Controllers
             try
             {
                 _logger.LogInformation("GetAll");
-                return Ok(_orderRepository.GetAll().ToList());
+                var result = _orderRepository.GetAll().ToList();
+                return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(result));
             }
             catch (Exception ex)
             {
@@ -41,7 +47,7 @@ namespace my_new_app.Controllers
             var result = _orderRepository.Get(id);
             if (result != null)
             {
-                return Ok(result);
+                return Ok(_mapper.Map<Order, OrderViewModel>(result));
             }
             else
             {
@@ -53,24 +59,33 @@ namespace my_new_app.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Order model)
+        public IActionResult Post([FromBody] OrderViewModel model)
         {
             try
             {
                 _logger.LogInformation("Post");
-                _orderRepository.Add(model);
-                if (_orderRepository.SaveChanges())
+                if (ModelState.IsValid)
                 {
-                    return Created($"/api/orders/{model.Id}", model);
+                    var newOrder = _mapper.Map<OrderViewModel, Order>(model);
+
+                    _orderRepository.Add(newOrder);
+                    if (_orderRepository.SaveChanges())
+                    {
+                        return Created($"/api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
+                    }
+                }
+                else
+                {
+                    return BadRequest("Failed");
                 }
 
             }
             catch (Exception ex)
             {
                 _logger.LogError("Error", ex);
-                
             }
             return BadRequest("Failed");
+
         }
     }
 }
