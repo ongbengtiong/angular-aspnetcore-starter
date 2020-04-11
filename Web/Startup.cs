@@ -3,13 +3,13 @@ using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 
 namespace my_new_app
 {
@@ -38,7 +38,11 @@ namespace my_new_app
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
-            services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //https://stackoverflow.com/questions/58006152/net-core-3-not-having-referenceloophandling-in-addjsonoptions
+            services.AddControllersWithViews()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -88,7 +92,6 @@ namespace my_new_app
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                     // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-
                 }
             });
         }

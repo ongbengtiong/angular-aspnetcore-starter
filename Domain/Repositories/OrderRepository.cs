@@ -20,7 +20,10 @@ namespace DSO.DotnetCore.Domain.Repositories
 
         public IEnumerable<Order> GetAll()
         {
-            return _dataContext.Orders.Include(o => o.Items).ToList();
+            return _dataContext.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i=>i.Product)
+                .ToList();
         }
 
     
