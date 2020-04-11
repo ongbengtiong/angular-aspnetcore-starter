@@ -29,7 +29,7 @@ namespace DSO.DotnetCore.Web.Controllers
             _repository = productRepository;
         }
 
-        [HttpPost("{id: int}")]
+        [HttpPost()]
         public IActionResult Post([FromBody] ProductViewModel model)
         {
             try

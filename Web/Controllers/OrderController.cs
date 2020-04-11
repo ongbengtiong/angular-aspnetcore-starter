@@ -26,12 +26,12 @@ namespace DSO.DotnetCore.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(bool includeItems = true)
         {
             try
             {
                 _logger.LogInformation("GetAll");
-                var result = _orderRepository.GetAll().ToList();
+                var result = _orderRepository.GetAll(includeItems);
                 return Ok(_mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(result));
             }
             catch (Exception ex)
@@ -44,16 +44,24 @@ namespace DSO.DotnetCore.Web.Controllers
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            var result = _orderRepository.Get(id);
-            if (result != null)
+            try
             {
-                return Ok(_mapper.Map<Order, OrderViewModel>(result));
+                var result = _orderRepository.Get(id);
+                if (result != null)
+                {
+                    return Ok(_mapper.Map<Order, OrderViewModel>(result));
+                }
+                else
+                {
+                    _logger.LogInformation("NotFound");
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                _logger.LogInformation("NotFound");
-                return NotFound();
+                _logger.LogError("Error", ex);
             }
+            return BadRequest("Failed");
 
             //return "Get: " + DateTime.Now.ToLongTimeString();
         }

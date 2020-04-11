@@ -6,6 +6,6 @@ namespace DSO.DotnetCore.Domain.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        
+        IEnumerable<Order> GetAll(bool includeItems);
     }
 }
