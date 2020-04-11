@@ -1,6 +1,8 @@
-﻿using Domain.Core.Repositories;
+﻿using AutoMapper;
+using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Domain.Entities;
+using DSO.DotnetCore.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -16,19 +18,44 @@ namespace DSO.DotnetCore.Web.Controllers
     {
         private readonly DataContext _dataContext;
         private readonly ILogger<ProductController> _logger;
+        private readonly IMapper _mapper;
         private readonly IProductRepository _repository;
 
-        public ProductController(ILogger<ProductController> logger, DataContext dataContext, IProductRepository productRepository)
+        public ProductController(ILogger<ProductController> logger, DataContext dataContext, IMapper mapper, IProductRepository productRepository)
         {
             _dataContext = dataContext;
             _logger = logger;
+            _mapper = mapper;
             _repository = productRepository;
         }
 
-        [HttpPost("{id}")]
-        public string Post(int id, object o)
+        [HttpPost("{id: int}")]
+        public IActionResult Post([FromBody] ProductViewModel model)
         {
-            return "Post: " + id + ": " + DateTime.Now.ToLongTimeString();
+            try
+            {
+
+                _logger.LogInformation("Post");
+                if (ModelState.IsValid)
+                {
+                    var newEntity = _mapper.Map<ProductViewModel, Product>(model);
+                    _repository.Add(newEntity);
+                    if (_repository.SaveChanges())
+                    {
+                        return Created($"/api/products/{newEntity.Id}", _mapper.Map<Product, ProductViewModel>(newEntity));
+                    }
+                }
+                else
+                {
+                    return BadRequest("Failed");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+            }
+            return BadRequest("Failed");
         }
 
         [HttpPatch("{id}")]
@@ -46,10 +73,10 @@ namespace DSO.DotnetCore.Web.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result = _dataContext.Products.Find(id);
+            var result = _repository.Get(id);
             if (result != null)
             {
-                return Ok(result);
+                return Ok(_mapper.Map<Product, ProductViewModel>(result));
             }
             else
             {
@@ -68,8 +95,8 @@ namespace DSO.DotnetCore.Web.Controllers
             {
                 _logger.LogInformation("GetAll");
                 var result = _repository.GetAll().OrderBy(p => p.Category).ToList();
-                //var result = _dataContext.Products.OrderBy(p => p.Category).ToList();
-                return Ok(result);
+                return Ok(_mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(result));
+                //var result = _dataContext.Products.OrderBy(p => p.Category).ToList();                
                 //return "GetAll: " + DateTime.Now.ToLongTimeString()  ;
             }
             catch (Exception ex)

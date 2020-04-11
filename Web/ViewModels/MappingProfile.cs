@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DSO.DotnetCore.Web.ViewModel
+namespace DSO.DotnetCore.Web.ViewModels
 {
     public class MappingProfile : Profile
     {
@@ -16,7 +16,10 @@ namespace DSO.DotnetCore.Web.ViewModel
             CreateMap<Order, OrderViewModel>()
                 .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id))
                 .ReverseMap();
-            CreateMap<OrderItem, OrderItemViewModel>();                
+            CreateMap<OrderItem, OrderItemViewModel>();
+            CreateMap<Product, ProductViewModel>()
+                .ForMember(o => o.ProductId, ex => ex.MapFrom(o => o.Id))
+                .ReverseMap();
         }
 
     }

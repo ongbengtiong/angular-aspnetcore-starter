@@ -66,12 +66,12 @@ namespace DSO.DotnetCore.Web.Controllers
                 _logger.LogInformation("Post");
                 if (ModelState.IsValid)
                 {
-                    var newOrder = _mapper.Map<OrderViewModel, Order>(model);
+                    var newEntity = _mapper.Map<OrderViewModel, Order>(model);
 
-                    _orderRepository.Add(newOrder);
+                    _orderRepository.Add(newEntity);
                     if (_orderRepository.SaveChanges())
                     {
-                        return Created($"/api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
+                        return Created($"/api/orders/{newEntity.Id}", _mapper.Map<Order, OrderViewModel>(newEntity));
                     }
                 }
                 else

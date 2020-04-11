@@ -1,13 +1,10 @@
-﻿
-using DSO.DotnetCore.Domain.Core.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace DSO.DotnetCore.Domain.Entities
+namespace DSO.DotnetCore.Web.ViewModels
 {
-    public class Product : BaseEntity
-    { 
+    public class ProductViewModel
+    {
+        public int ProductId { get; set; }
         public string Category { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
