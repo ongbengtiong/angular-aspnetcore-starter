@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace my_new_app
+namespace DSO.DotnetCore.Web
 {
     public class Program
     {
