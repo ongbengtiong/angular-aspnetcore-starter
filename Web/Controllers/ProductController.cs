@@ -57,6 +57,39 @@ namespace DSO.DotnetCore.Web.Controllers
             }
             return BadRequest("Failed");
         }
+        [HttpPut("{id:int}")]
+        public IActionResult Put(int id, [FromBody] ProductViewModel model)
+        {
+            try
+            {
+
+                _logger.LogInformation("Put");
+                if (ModelState.IsValid)
+                {
+                    // https://entityframework.net/knowledge-base/50532569/automapper--to-do-an-update-on-existing-entity-object
+                    var existingEntity = _repository.Get(id);
+                    var inputEntity = _mapper.Map<ProductViewModel, Product>(model);
+
+                    _mapper.Map<ProductViewModel, Product>(model, existingEntity);
+
+
+                    if (_repository.SaveChanges())
+                    {
+                        return Ok(_mapper.Map<Product, ProductViewModel>(existingEntity));
+                    }
+                }
+                else
+                {
+                    return BadRequest("Failed");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+            }
+            return BadRequest("Failed");
+        }
 
         [HttpPatch("{id}")]
         public string Patch(int id, object o)

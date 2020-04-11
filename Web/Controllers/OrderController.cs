@@ -2,6 +2,7 @@
 using DSO.DotnetCore.Domain.Entities;
 using DSO.DotnetCore.Domain.Repositories;
 using DSO.DotnetCore.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,6 +26,7 @@ namespace DSO.DotnetCore.Web.Controllers
             _orderRepository = orderRepository;
         }
 
+        //[Authorize]
         [HttpGet]
         public IActionResult GetAll(bool includeItems = true)
         {
