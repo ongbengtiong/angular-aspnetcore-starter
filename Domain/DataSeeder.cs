@@ -1,14 +1,11 @@
 ﻿using DSO.DotnetCore.Domain.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace DSO.DotnetCore.Domain
 {
@@ -23,18 +20,25 @@ namespace DSO.DotnetCore.Domain
             _env = env;
         }
 
-
         public void Seed()
         {
             _dataContext.Database.EnsureCreated();
-
-            if(!_dataContext.Products.Any())
+           
+            if (!_dataContext.Products.Any())
             {
-                var filePath = Path.Combine(_env .ContentRootPath, "SeedData/products.json");
+                var filePath = Path.Combine(_env.ContentRootPath, "SeedData/products.json");
                 // var filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SeedData/products.json");
                 var json = File.ReadAllText(filePath);
                 var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
                 _dataContext.Products.AddRange(products);
+
+
+                var order1 = new Order()
+                {
+                    OrderNumber = "X123",
+                    OrderDate = DateTime.Now
+                };
+                _dataContext.Orders.Add(order1);
 
                 var order = _dataContext.Orders.Where(o => o.Id == 1).FirstOrDefault();
                 if (order != null)
@@ -47,15 +51,11 @@ namespace DSO.DotnetCore.Domain
                             Quantity = 5,
                             UnitPrice = products.First().Price
                         }
-
                     };
                 }
 
                 _dataContext.SaveChanges();
-
-
             }
-
         }
     }
 }

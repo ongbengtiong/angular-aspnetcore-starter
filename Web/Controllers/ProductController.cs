@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Domain.Core.Repositories;
+﻿using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
+using DSO.DotnetCore.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DSO.DotnetCore.Web.Controllers
 {
     [ApiController]
     [Route("api/products")]
+    [Produces("application/json")]
     public class ProductController : ControllerBase
     {
         private readonly DataContext _dataContext;
@@ -23,21 +24,25 @@ namespace DSO.DotnetCore.Web.Controllers
             _logger = logger;
             _repository = productRepository;
         }
+
         [HttpPost("{id}")]
         public string Post(int id, object o)
         {
             return "Post: " + id + ": " + DateTime.Now.ToLongTimeString();
         }
+
         [HttpPatch("{id}")]
         public string Patch(int id, object o)
         {
             return "Patch: " + id + ": " + DateTime.Now.ToLongTimeString();
         }
+
         [HttpDelete("{id}")]
         public string Delete(int id)
         {
             return "Delete: " + id + ": " + DateTime.Now.ToLongTimeString();
         }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -53,8 +58,11 @@ namespace DSO.DotnetCore.Web.Controllers
 
             //return "Get: " + DateTime.Now.ToLongTimeString();
         }
+
         [HttpGet]
-        public IActionResult GetAll()
+        //[ProducesErrorResponseType()]
+        //[ProducesErrorResponseType(400)]
+        public ActionResult<IEnumerable<Product>> GetAll()
         {
             try
             {
@@ -63,12 +71,11 @@ namespace DSO.DotnetCore.Web.Controllers
                 //var result = _dataContext.Products.OrderBy(p => p.Category).ToList();
                 return Ok(result);
                 //return "GetAll: " + DateTime.Now.ToLongTimeString()  ;
-
             }
             catch (Exception ex)
             {
                 _logger.LogError("Error", ex);
-                return null;
+                return BadRequest(ex.Message);
             }
         }
     }

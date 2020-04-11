@@ -37,5 +37,5 @@ EF:
 - dotnet tool install dotnet-ef -g
 - dotnet ef database update BUT... 
 - Pluralsight tutorial resides DbContext in same project as ASP.NET, so...- https://dotnetthoughts.net/using-ef-core-in-a-separate-class-library/
-- dotnet ef migrations add InitialMigrations --project ..\Domain\Domain.csproj --startup-project .\Web.csproj
+- dotnet ef migrations add <Name> --project ..\Domain\Domain.csproj --startup-project .\Web.csproj --context DataContext
 
