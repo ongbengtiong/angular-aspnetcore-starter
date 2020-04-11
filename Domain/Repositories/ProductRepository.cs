@@ -7,11 +7,11 @@ using System.Text;
 
 namespace DSO.DotnetCore.Domain.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         private readonly DataContext _dataContext;
 
-        public ProductRepository(DataContext dataContext)
+        public ProductRepository(DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
         }
@@ -20,11 +20,15 @@ namespace DSO.DotnetCore.Domain.Repositories
             return _dataContext.Products.Where(p => p.Category == category).ToList();
         }
 
-        public IEnumerable<Product> GetAll()
+        public override IEnumerable<Product> GetAll()
         {
             return _dataContext.Products.ToList();
         }
 
-    
+        public override Product Get(int id)
+        {
+            return _dataContext.Products
+                .Find(id);
+        }
     }
 }

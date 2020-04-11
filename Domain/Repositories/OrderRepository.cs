@@ -8,17 +8,17 @@ using System.Text;
 
 namespace DSO.DotnetCore.Domain.Repositories
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : BaseRepository<Order>, IOrderRepository
     {
         private readonly DataContext _dataContext;
 
-        public OrderRepository(DataContext dataContext)
+        public OrderRepository(DataContext dataContext): base(dataContext)
         {
             _dataContext = dataContext;
         }
     
 
-        public IEnumerable<Order> GetAll()
+        public override IEnumerable<Order> GetAll()
         {
             return _dataContext.Orders
                 .Include(o => o.Items)
@@ -26,6 +26,17 @@ namespace DSO.DotnetCore.Domain.Repositories
                 .ToList();
         }
 
-    
+
+        
+        public override Order Get(int id)
+        {
+            return _dataContext.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .Where(o => o.Id == id)
+                .FirstOrDefault();
+        }
+
+ 
     }
 }
