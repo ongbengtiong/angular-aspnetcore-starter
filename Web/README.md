@@ -42,3 +42,5 @@ EF:
 
 AutoMapper:
 ViewModels:
+Identity:
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore

@@ -7,5 +7,7 @@ namespace DSO.DotnetCore.Domain.Repositories
     public interface IOrderRepository : IRepository<Order>
     {
         IEnumerable<Order> GetAll(bool includeItems);
+        IEnumerable<Order> GetAllByUser(string userName, bool includeItems);
+        Order GetByUser(string userName, int id);
     }
 }

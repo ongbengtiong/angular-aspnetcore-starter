@@ -1,4 +1,6 @@
-﻿using DSO.DotnetCore.Domain.Entities;
+﻿using Domain.Core.Security;
+using DSO.DotnetCore.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
@@ -7,7 +9,7 @@ using System.Text;
 
 namespace DSO.DotnetCore.Domain
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions options)
       : base(options)
@@ -21,6 +23,7 @@ namespace DSO.DotnetCore.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
             {
                 entityType.SetTableName(entityType.DisplayName());

@@ -1,4 +1,5 @@
-﻿using DSO.DotnetCore.Domain.Core.Base;
+﻿using Domain.Core.Security;
+using DSO.DotnetCore.Domain.Core.Base;
 using System;
 using System.Collections.Generic;
 
@@ -9,6 +10,8 @@ namespace DSO.DotnetCore.Domain.Entities
         public DateTime OrderDate { get; set; }
         public string OrderNumber { get; set; } 
         public ICollection<OrderItem> Items { get; set; }
+
+        public User User { get; set; }
 
     }
 }

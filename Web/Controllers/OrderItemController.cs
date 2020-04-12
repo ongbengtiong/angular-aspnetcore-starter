@@ -30,7 +30,8 @@ namespace DSO.DotnetCore.Web.Controllers
         {
             try
             {
-                var result = _orderRepository.Get(orderId);
+                var userName = User.Identity.Name;
+                var result = _orderRepository.GetByUser(userName, orderId);
                 if (result != null)
                 {
                     return Ok(_mapper.Map<IEnumerable<OrderItem>, IEnumerable<OrderItemViewModel>>(result.Items));

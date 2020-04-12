@@ -3,6 +3,8 @@ using Domain.Core.Repositories;
 using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Domain.Entities;
 using DSO.DotnetCore.Web.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,6 +16,7 @@ namespace DSO.DotnetCore.Web.Controllers
     [ApiController]
     [Route("api/products")]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class ProductController : ControllerBase
     {
         private readonly DataContext _dataContext;

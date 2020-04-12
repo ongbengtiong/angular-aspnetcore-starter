@@ -28,7 +28,7 @@ namespace DSO.DotnetCore.Web
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<DataSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
             
         }
