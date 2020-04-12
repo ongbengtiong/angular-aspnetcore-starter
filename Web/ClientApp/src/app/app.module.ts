@@ -24,6 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EntityEffects } from './modules/entity/store/effect';
+import { LoginComponent } from './modules/home/components/login/login.component';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -64,7 +65,8 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
         component: HomePage, children: [
           { path: '', component: BackgroundComponent },
           { path: 'background', component: BackgroundComponent },
-          { path: 'fetch-data', component: FetchDataComponent }
+          { path: 'fetch-data', component: FetchDataComponent },
+          { path: 'login', component: LoginComponent }
         ]
       },
       {
@@ -89,7 +91,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     BsDropdownModule.forRoot(),
 
     LayoutModule,
-    HomeModule, 
+    HomeModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

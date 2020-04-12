@@ -16,6 +16,7 @@ import { BackgroundComponent } from './components/background/background.componen
 import { MaterialModule } from '../../shared/material.module';
 
 import { SidebarModule } from 'primeng/sidebar'; 
+import { LoginComponent } from './components/login/login.component';
 
  
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
     path: '', component: HomePage, children: [
       { path: '', component: BackgroundComponent },
       { path: 'background', component: BackgroundComponent },
-      { path: 'fetch-data', component: FetchDataComponent }
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'login', component: LoginComponent}
     ]
   }
 ];
@@ -33,6 +35,7 @@ const routes: Routes = [
     HomePage,
     FetchDataComponent,
     BackgroundComponent,
+    LoginComponent
   ],
   imports: [
     // BrowserAnimationsModule,
@@ -40,6 +43,7 @@ const routes: Routes = [
     // FontAwesomeModule,
     // FormsModule,
     //RouterModule.forChild(routes),
+    CommonModule,
     ReactiveFormsModule,
     SharedModule,
     MaterialModule,
