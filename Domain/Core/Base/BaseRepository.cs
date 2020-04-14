@@ -24,6 +24,6 @@ namespace DSO.DotnetCore.Domain.Repositories
 
         public abstract T Get(int id);
 
-        public abstract IEnumerable<T> GetAll();
+        public abstract IEnumerable<T> GetAll(string sort);
     }
 }

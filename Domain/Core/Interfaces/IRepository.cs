@@ -6,7 +6,7 @@ namespace DSO.DotnetCore.Domain.Core.Interfaces.Repositories
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string sort);
 
         T Get(int id);
 

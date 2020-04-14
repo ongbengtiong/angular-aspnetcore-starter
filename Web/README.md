@@ -22,6 +22,7 @@ Issue: Generating ES5 bundles for differential loading... An unhandled exception
 TODO:
 - REST with GET, POST, PUT, PATCH, DELETE. JsonPatchDocument
 - REST API with sort, filter and paging
+   - install System.Linq.Dynamic.Core instead of System.Linq.Dynamic
 - REST security: Using JWT [done]
 - REST data shaping
 - REST caching

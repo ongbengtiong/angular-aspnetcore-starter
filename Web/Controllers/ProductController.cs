@@ -6,23 +6,26 @@ using DSO.DotnetCore.Web.ViewModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using X.PagedList;
 
 namespace DSO.DotnetCore.Web.Controllers
 {
     [ApiController]
     [Route("api/products")]
     [Produces("application/json")]
-    
+
     public class ProductController : ControllerBase
     {
         private readonly DataContext _dataContext;
         private readonly ILogger<ProductController> _logger;
         private readonly IMapper _mapper;
         private readonly IProductRepository _repository;
+        private int maxPageSize = 10;
 
         public ProductController(ILogger<ProductController> logger, DataContext dataContext, IMapper mapper, IProductRepository productRepository)
         {
@@ -112,12 +115,13 @@ namespace DSO.DotnetCore.Web.Controllers
                 if (result)
                 {
                     return NoContent();
-                }else
+                }
+                else
                 {
                     return BadRequest();
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logger.LogError("Error", ex);
             }
@@ -144,15 +148,52 @@ namespace DSO.DotnetCore.Web.Controllers
         }
 
         [HttpGet]
+        [Route("", Name = "GetProducts")]
         //[ProducesErrorResponseType()]
         //[ProducesErrorResponseType(400)]
-        public ActionResult<IEnumerable<Product>> GetAll()
+        public ActionResult<IEnumerable<Product>> GetAll(string sort = "id", int page = 1, int pageSize = 3)
         {
             try
             {
                 _logger.LogInformation("GetAll");
-                var result = _repository.GetAll().OrderBy(p => p.Category).ToList();
-                return Ok(_mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(result));
+                var result = _repository.GetAll(sort);
+                if (pageSize > maxPageSize)
+                {
+                    pageSize = maxPageSize;
+                }
+                var pagedResult = result.ToPagedList(page, pageSize);
+
+                var urlHelper = this.Url;
+
+                var previousPageLink = page > 1 ? urlHelper.Link("GetProducts", new
+                {
+                    page = page - 1,
+                    pageSize = pageSize,
+                    sort = sort,
+                }) : "";
+
+
+                var nextPageLink = page < pagedResult.PageCount ? urlHelper.Link("GetProducts", new
+                {
+                    page = page + 1,
+                    pageSize = pageSize,
+                    sort = sort,
+
+                }) : "";
+                var paginationHeader = new
+                {
+                    currentPage = page,
+                    pageSize = pageSize,
+                    totalCount = pagedResult.TotalItemCount,
+                    totalPages = pagedResult.PageCount,
+                    previousPageLink = previousPageLink,
+                    nextPageLink = nextPageLink
+                };
+
+                HttpContext.Response.Headers.Add("X-Pagination", Newtonsoft.Json.JsonConvert.SerializeObject(paginationHeader));
+
+
+                return Ok(_mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(pagedResult.ToList()));
                 //var result = _dataContext.Products.OrderBy(p => p.Category).ToList();                
                 //return "GetAll: " + DateTime.Now.ToLongTimeString()  ;
             }

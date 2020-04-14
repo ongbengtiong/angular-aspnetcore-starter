@@ -27,7 +27,7 @@ namespace DSO.DotnetCore.Domain.Repositories
 
             //return query.ToList();
         }
-        public override IEnumerable<Order> GetAll()
+        public override IEnumerable<Order> GetAll(string sort)
         {
             return GetAll(true);
         }
