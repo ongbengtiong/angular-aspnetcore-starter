@@ -1,17 +1,17 @@
-﻿Angular 9.1.0
+﻿Angular 9.1.0 [done]
 
-Material 9
+Material 9 [done]
 
-Ngx-Bootstrap
+Ngx-Bootstrap [done]
 
-FontAwesome
+FontAwesome [done]
 
-NGRX 9.0.0
+NGRX 9.0.0 [done]
 
-BPMN-JS
-DMN-JS
+BPMN-JS [done]
+DMN-JS [done]
 
-PrimeNg-Sidebar
+PrimeNg-Sidebar [done]
 
 Upgrade Angular 8 to 9: Steps and Issues
 Followed similar steps and resolved issues in: https://jasontaylor.dev/asp-net-core-angular-9-upgrade/
@@ -22,14 +22,14 @@ Issue: Generating ES5 bundles for differential loading... An unhandled exception
 TODO:
 - REST with GET, POST, PUT, PATCH, DELETE. JsonPatchDocument
 - REST API with sort, filter and paging
-- REST security: Using JWT
+- REST security: Using JWT [done]
 - REST data shaping
 - REST caching
-- EF Core
+- EF Core [done]
 
 ASP.NET Core 
-- Use ViewModel validation
-- UseNodeModules
+- Use ViewModel validation [done]
+- UseNodeModules [done]
 
 EF:
 - https://app.pluralsight.com/course-player?clipId=a1cd8a69-a4fd-4871-84c9-02a78d60aade
@@ -39,11 +39,12 @@ EF:
 - Pluralsight tutorial resides DbContext in same project as ASP.NET, so...- https://dotnetthoughts.net/using-ef-core-in-a-separate-class-library/
 - dotnet ef migrations add <Name> --project ..\Domain\Domain.csproj --startup-project .\Web.csproj --context DataContext
 - New System.Text.Json does not support many features of Newtonsoft.Json, so we re-install Microsoft.AspNetCore.Mvc.NewtonsoftJson: https://stackoverflow.com/questions/58006152/net-core-3-not-having-referenceloophandling-in-addjsonoptions
+- To drop database: dotnet ef database drop
 
-AutoMapper:
+AutoMapper: [done]
 ViewModels:
 Identity:
-- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore [done]
 
 
 Frontend:

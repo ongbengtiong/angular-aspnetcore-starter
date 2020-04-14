@@ -1,10 +1,13 @@
 ﻿[
   {
-    
+
     "ArtistBirthDate": "2020-01-01",
     "Title": "Product-01",
     "Artist": "Artist-01",
-    "ImageUrl": "https://example.com/sample-01.png"
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/402px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+    "Price": 2560.00,
+    "Size": "65cm"
+    
   },
   {
 
@@ -12,20 +15,26 @@
     "ArtistBirthDate": "2020-01-02",
     "Title": "Product-02",
     "Artist": "Artist-02",
-    "ImageUrl": "https://example.com/sample-02.png"
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Vincent_van_Gogh_-_Starry_Night_-_Google_Art_Project_2.jpg/776px-Vincent_van_Gogh_-_Starry_Night_-_Google_Art_Project_2.jpg",
+    "Price": 560.99,
+    "Size": "375cm"
   },
   {
-    
+
     "ArtistBirthDate": "2020-01-03",
     "Title": "Product-03",
     "Artist": "Artist03",
-    "ImageUrl": "https://example.com/sample-03.png"
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Jules_Salles-Wagner_Romeo_and_Juliet.jpg/465px-Jules_Salles-Wagner_Romeo_and_Juliet.jpg",
+    "Price": 26840.00,
+    "Size": "605cm"
   },
   {
-    
+
     "ArtistBirthDate": "2020-01-04",
     "Title": "Product-04",
     "Artist": "Artist04",
-    "ImageUrl": "https://example.com/sample-04.png"
+    "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Scream.jpg/470px-The_Scream.jpg",
+    "Price": 3560.99,
+    "Size": "325cm"
   }
 ]

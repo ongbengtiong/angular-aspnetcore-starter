@@ -101,6 +101,7 @@ export class ShopService {
       item.productCategory = product.category;
       item.productArtId = product.artId;
       item.productTitle = product.title;
+      item.productImageUrl = product.imageUrl;
       item.productSize = product.size;
       item.unitPrice = product.price;
       item.quantity = 1;

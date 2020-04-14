@@ -23,6 +23,7 @@ export class OrderItem {
   productCategory?: any;
   productSize?: any;
   productTitle: string;
+  productImageUrl: string;
   productArtist: string;
   productArtId?: any;
 }

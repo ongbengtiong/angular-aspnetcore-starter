@@ -5,6 +5,7 @@ export class Product {
   size?: any;
   price: number;
   title: string;
+  imageUrl: string;
   artDescription?: any;
   artDating?: any;
   artId?: any;

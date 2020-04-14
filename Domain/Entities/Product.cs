@@ -12,6 +12,7 @@ namespace DSO.DotnetCore.Domain.Entities
         public string Size { get; set; }
         public decimal Price { get; set; }
         public string Title { get; set; }
+        public string ImageUrl { get; set; }
         public string ArtDescription { get; set; }
         public string ArtDating { get; set; }
         public string ArtId { get; set; }

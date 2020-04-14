@@ -5,7 +5,8 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "checkout-page",
-  templateUrl: "./checkout.page.html"
+  templateUrl: "./checkout.page.html",
+  styleUrls: ["./checkout.page.css"]
 })
 export class CheckoutPage   {
   constructor(public shopService: ShopService, public router: Router) {
