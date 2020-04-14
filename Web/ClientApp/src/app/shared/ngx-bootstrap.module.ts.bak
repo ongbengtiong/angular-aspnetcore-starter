@@ -1,0 +1,22 @@
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { MatTreeModule } from '@angular/material/tree';
+;
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+const ngxBootstrapModules = [
+  BsDatepickerModule.forRoot(),
+  BsDropdownModule
+];
+@NgModule({
+  imports: [
+    ...ngxBootstrapModules
+  ],
+  exports: [
+    ...ngxBootstrapModules
+  ]
+})
+export class NgxBootstrapModule { }

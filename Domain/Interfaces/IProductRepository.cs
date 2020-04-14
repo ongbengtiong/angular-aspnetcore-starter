@@ -9,5 +9,6 @@ namespace Domain.Core.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         IEnumerable<Product> GetAllByCategory(string category);
+        bool Delete(int id);
     }
 }

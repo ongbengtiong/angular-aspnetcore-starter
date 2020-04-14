@@ -33,6 +33,7 @@ namespace DSO.DotnetCore.Web.Controllers
         }
 
         [HttpPost()]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Post([FromBody] ProductViewModel model)
         {
             try
@@ -61,6 +62,7 @@ namespace DSO.DotnetCore.Web.Controllers
             return BadRequest("Failed");
         }
         [HttpPut("{id:int}")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Put(int id, [FromBody] ProductViewModel model)
         {
             try
@@ -101,9 +103,28 @@ namespace DSO.DotnetCore.Web.Controllers
         }
 
         [HttpDelete("{id}")]
-        public string Delete(int id)
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult Delete(int id)
         {
-            return "Delete: " + id + ": " + DateTime.Now.ToLongTimeString();
+            try
+            {
+                var result = _repository.Delete(id);
+                if (result)
+                {
+                    return NoContent();
+                }else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError("Error", ex);
+            }
+
+            return BadRequest("Failed");
+            //return "Delete: " + id + ": " + DateTime.Now.ToLongTimeString();
+
         }
 
         [HttpGet("{id}")]

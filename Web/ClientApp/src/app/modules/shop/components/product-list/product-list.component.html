@@ -1,27 +1,6 @@
 <h3>{{title}}</h3>
 
-
-
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="entities$">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let entity of (entities$ | async)">
-      <td>{{entity.productId}}</td>
-      <td>{{entity.title}}</td>
-      <td>{{entity.artist}}</td>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
+ 
 
 <div class="row">
 

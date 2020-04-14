@@ -30,5 +30,25 @@ namespace DSO.DotnetCore.Domain.Repositories
             return _dataContext.Products
                 .Find(id);
         }
+
+        
+        public bool Delete(int id)
+        {
+            try
+            {
+                var exp = this.Get(id);
+                if (exp != null)
+                {
+                    _dataContext.Products.Remove(exp);
+                    _dataContext.SaveChanges();
+                    return true;
+                }
+                throw new Exception("Not Found");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Repository Error", ex);
+            }
+        }
     }
 }

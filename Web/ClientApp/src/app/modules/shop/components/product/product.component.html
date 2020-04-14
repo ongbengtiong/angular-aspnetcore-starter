@@ -1,0 +1,44 @@
+<h3>{{title}}</h3>
+<form [formGroup]="entityForm">
+  <div class="form-group">
+    <label for="id">ID:</label>&nbsp;
+    <input [readonly]="isEdit" id="id" class="form-control" formControlName="id" />
+  </div>
+  <br />
+  <div class="form-group">    <label for="id">id                     :</label>&nbsp;    <input id="id" type="number" class="form-control" formControlName="id" />  </div>  <br />
+  <div class="form-group">    <label for="category">category               :</label>&nbsp;    <input id="category" class="form-control" formControlName="category" />  </div>  <br />
+  <div class="form-group">    <label for="size">size                   :</label>&nbsp;    <input id="size" class="form-control" formControlName="size" />  </div>  <br />
+  <div class="form-group">    <label for="price">price                  :</label>&nbsp;    <input id="price" type="number" class="form-control" formControlName="price" />  </div>  <br />
+  <div class="form-group">    <label for="title">title                  :</label>&nbsp;    <input id="title" class="form-control" formControlName="title" />  </div>  <br />
+  <div class="form-group">    <label for="imageUrl">imageUrl               :</label>&nbsp;    <input id="imageUrl" class="form-control" formControlName="imageUrl" />  </div>  <br />
+  <div class="form-group">    <label for="artDescription">artDescription         :</label>&nbsp;    <input id="artDescription" class="form-control" formControlName="artDescription" />  </div>  <br />
+  <div class="form-group">    <label for="artDating">artDating              :</label>&nbsp;    <input id="artDating" class="form-control" formControlName="artDating" />  </div>  <br />
+  <div class="form-group">    <label for="artId">artId                  :</label>&nbsp;    <input id="artId" type="number" class="form-control" formControlName="artId" />  </div>  <br />
+  <div class="form-group">    <label for="artist">artist                 :</label>&nbsp;    <input id="artist" class="form-control" formControlName="artist" />  </div>  <br />
+  <div class="form-group">
+    <label for="artistBirthDate">artistBirthDate        :</label>&nbsp;
+    <!-- <input id="artistBirthDate" class="form-control" formControlName="artistBirthDate" />-->
+    <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           formControlName="artistBirthDate"
+           bsDatepicker>
+  </div>  <br />
+  <div class="form-group">
+    <label for="artistDeathDate">artistDeathDate        :</label>&nbsp;
+    <!--  <input id="artistDeathDate" class="form-control" formControlName="artistDeathDate" />-->
+    <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           formControlName="artistDeathDate"
+           bsDatepicker>
+  </div>  <br />
+  <div class="form-group">    <label for="artistNationality">artistNationality      :</label>&nbsp;    <input id="artistNationality" class="form-control" formControlName="artistNationality" />  </div>  <br />
+
+
+
+
+  <div>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</form>

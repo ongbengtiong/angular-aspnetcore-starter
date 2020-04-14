@@ -9,6 +9,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../../shared/material.module';
+//import { NgxBootstrapModule } from '../../shared/ngx-bootstrap.module';
 // import { EntityResolver, EntitiesResolver } from './resolvers';
 import { ShopPage } from './pages/shop/shop.page';
 import { ShopFrontPage } from './pages/shop-front/shop-front.page';
@@ -19,6 +20,10 @@ import { reducer } from './store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopEffects } from './store/effect';
 import { CartComponent } from './components/cart/cart.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductResolver } from './resolvers/entity.resolver';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductPage } from './pages/product/product.page';
 
 
 
@@ -27,9 +32,20 @@ const routes: Routes = [
     path: '', component: ShopPage, children: [
       { path: '', pathMatch: 'full', component: ShopFrontPage },
       { path: 'shop-front', component: ShopFrontPage },
-      { path: "checkout", component: CheckoutPage }
+      { path: "checkout", component: CheckoutPage },
     ]
-  }
+  },
+  {
+    path: "products", component: ProductPage, children: [
+      { path: "", component: ProductsComponent },
+      {
+        path: "edit/:id", component: ProductComponent,
+        resolve: { entity: ProductResolver }
+      },
+      { path: "add", component: ProductComponent }
+    ]
+  },
+
 ];
 
 @NgModule({
@@ -38,13 +54,16 @@ const routes: Routes = [
     ShopFrontPage,
     CheckoutPage,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    ProductPage,
+    ProductComponent,
+    ProductsComponent
   ],
   imports: [
     ReactiveFormsModule,
     SharedModule,
     MaterialModule,
-    BsDropdownModule,
+    //NgxBootstrapModule,
     LayoutModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('shop', reducer),
@@ -56,6 +75,6 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  //providers: [EntitiesResolver, EntityResolver]
+  providers: [ProductResolver]
 })
 export class ShopModule { }

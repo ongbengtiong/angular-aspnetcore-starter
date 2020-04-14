@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EntityEffects } from './modules/entity/store/effect';
 import { LoginComponent } from './modules/home/components/login/login.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -55,7 +56,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
   ],
   imports: [
     // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-
+    
     BrowserAnimationsModule,
     RouterModule.forRoot([
 
@@ -114,6 +115,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     }),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     {

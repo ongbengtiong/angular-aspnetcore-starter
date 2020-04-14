@@ -5,7 +5,7 @@ import { ORDER_FEATURE_KEY } from "./order/reducer";
 import { ShopState } from "./reducer";
 
 // get the selectors
-const { selectIds, selectAll, selectTotal } = productAdapter.getSelectors();
+// const { selectIds, selectAll, selectTotal } = productAdapter.getSelectors();
 
 /******** Products  */
 // Lookup the 'Product' feature state managed by NgRx
@@ -35,7 +35,7 @@ export const selectProductCount = createSelector(
 // select the Product by Id
 export const selectProduct = createSelector(
   getProductState,
-  (state: ShopState, prop: { id: number }) => state.products[prop.id]
+  (state: ShopState, prop: { id: number }) => state.products.entities[prop.id]
 );
 
 // select entity loaded flag
@@ -66,7 +66,9 @@ export const selectOrderIds = createSelector(
 // select the array of Orders
 export const selectAllOrders = createSelector(
   getOrderState,
-  (state: ShopState) => state.orders.entities
+  (state: ShopState) => {
+    return Object.values(state.orders.entities);
+  }
 );
 
 // select the total Order count
@@ -78,7 +80,7 @@ export const selectOrderCount = createSelector(
 // select the Order by Id
 export const selectOrder = createSelector(
   getOrderState,
-  (state: ShopState, prop: { id: number }) => state.orders[prop.id]
+  (state: ShopState, prop: { id: number }) => state.orders.entities[prop.id]
 );
 
 // select entity loaded flag

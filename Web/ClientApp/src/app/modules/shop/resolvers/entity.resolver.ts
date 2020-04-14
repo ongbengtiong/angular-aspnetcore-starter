@@ -5,24 +5,24 @@ import { Observable } from "rxjs";
 import { filter, take } from "rxjs/operators";
  
 import { fromShopActions } from "../store/actions";
-import { EntityPartialState } from "../store/reducer";
-import { selectEntity } from "../store/selectors";
-import { Entity } from "../models/entity";
+import { EntityPartialState } from "../store/product/reducer";
+import { selectProduct} from "../store/selectors";
+import { Product } from "../models/product";
 
 @Injectable()
-export class EntityResolver implements Resolve<Entity> {
+export class ProductResolver implements Resolve<Product> {
   constructor(private store: Store<EntityPartialState>) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Entity> {
+  resolve(route: ActivatedRouteSnapshot): Observable<Product> {
     const entity$ = this.store.pipe(
-      select(selectEntity, { id: route.params.id })
+      select(selectProduct, { id: route.params.id })
     );
 
     return entity$.pipe(
       filter(entity => {
         if (!entity) {
           this.store.dispatch(
-            fromShopActions.loadEntity({ id: route.params.id })
+            fromShopActions.loadProduct({ id: route.params.id })
           );
         }
 
