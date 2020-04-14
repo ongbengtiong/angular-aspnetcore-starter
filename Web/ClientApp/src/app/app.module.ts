@@ -82,6 +82,14 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
         loadChildren: () => import('./modules/entity/entity.module').then(m => m.EntityModule)
       },
 
+      {
+        path: 'shop',
+        loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
+      },
+
+
+      
+
     ]),
     HttpClientModule,
     FormsModule,
@@ -92,18 +100,20 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
 
     LayoutModule,
     HomeModule,
-    StoreModule.forRoot(reducers, {
+  /*  StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    }),
+    }),*/
+    
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([EntityEffects]),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

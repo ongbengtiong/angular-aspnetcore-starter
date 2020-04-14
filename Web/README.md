@@ -22,7 +22,7 @@ Issue: Generating ES5 bundles for differential loading... An unhandled exception
 TODO:
 - REST with GET, POST, PUT, PATCH, DELETE. JsonPatchDocument
 - REST API with sort, filter and paging
-- REST security
+- REST security: Using JWT
 - REST data shaping
 - REST caching
 - EF Core
@@ -44,3 +44,9 @@ AutoMapper:
 ViewModels:
 Identity:
 - Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+
+Frontend:
+NGRX Feature Store: https://itnext.io/ngrx-best-practices-for-enterprise-angular-applications-6f00bcdf36d7
+https://dzone.com/articles/separating-state-into-angular-modules-with-ngrx
+NGRX Multiple entities: https://medium.com/capital-one-tech/multiple-entities-in-a-single-ngrx-8-state-ed5fd082c3f0

@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using System;
 using System.Reflection;
 using System.Text;
 
@@ -116,6 +117,7 @@ namespace DSO.DotnetCore.Web
 
                 if (env.IsDevelopment())
                 {
+                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 59);  
                     spa.UseAngularCliServer(npmScript: "start");
                     // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }

@@ -88,7 +88,7 @@ namespace DSO.DotnetCore.Web.Controllers
                     var newEntity = _mapper.Map<OrderViewModel, Order>(model);
                     var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
                     newEntity.User = currentUser;
-                    _orderRepository.Add(newEntity);
+                    _orderRepository.AddOrder(newEntity);
                     if (_orderRepository.SaveChanges())
                     {
                         return Created($"/api/orders/{newEntity.Id}", _mapper.Map<Order, OrderViewModel>(newEntity));
@@ -96,7 +96,7 @@ namespace DSO.DotnetCore.Web.Controllers
                 }
                 else
                 {
-                    return BadRequest("Failed");
+                    return BadRequest(ModelState);
                 }
 
             }

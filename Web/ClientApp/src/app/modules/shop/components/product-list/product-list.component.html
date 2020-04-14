@@ -1,0 +1,44 @@
+<h3>{{title}}</h3>
+
+
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="entities$">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entity of (entities$ | async)">
+      <td>{{entity.productId}}</td>
+      <td>{{entity.title}}</td>
+      <td>{{entity.artist}}</td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+
+  <div class=" col-md-4" *ngFor="let p of (entities$ | async)">
+    <div class="card bg-light p-1 m-1">
+      <img src="/img/{{ p.artId }}.jpg" class="img-fluid" [alt]="p.title" />
+      <h3>{{ p.category }} - {{ p.size }}</h3>
+      <ul class="product-props list-unstyled">
+        <li><strong>Price</strong>: {{ p.price | currency:"USD":"symbol" }}</li>
+        <li><strong>Artist</strong>: {{ p.artist }}</li>
+        <li><strong>Title</strong>: {{ p.title }}</li>
+        <li><strong>Description</strong>: {{ p.artDescription }}</li>
+      </ul>
+      <button id="buyButton" class="btn btn-success" (click)="addProduct(p)">Buy</button>
+      <a [routerLink]="['edit', p.productId]">Edit</a> |
+      <a href="javascript:void(0)" (click)="delete(p.productId)">Delete</a>
+
+    </div>
+  </div>
+</div>

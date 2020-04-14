@@ -16,7 +16,7 @@ namespace DSO.DotnetCore.Web.Controllers
     [ApiController]
     [Route("api/products")]
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
+    
     public class ProductController : ControllerBase
     {
         private readonly DataContext _dataContext;

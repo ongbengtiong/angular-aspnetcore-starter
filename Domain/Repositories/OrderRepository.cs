@@ -63,5 +63,14 @@ namespace DSO.DotnetCore.Domain.Repositories
                  .Where(o => o.User.UserName == userName)
                  .FirstOrDefault();
         }
+
+        public void AddOrder(Order newEntity)
+        {
+            foreach (var item in newEntity.Items)
+            {
+                item.Product = _dataContext.Products.Find(item.Product.Id);
+            }
+            Add(newEntity);
+        }
     }
 }

@@ -9,9 +9,15 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AccountService {
-  token: any;
-    tokenExpiration: any;
+  
+  private token: string = "";
+  private tokenExpiration: Date = new Date();
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private configService: ConfigService) { }
+
+
+  isLoginRequired(): boolean {
+    return (this.token.length == 0 || this.tokenExpiration > new Date());
+  }
 
   login(credentials): Observable<boolean> {
     const url = `${this.configService.apiUrl}/account/createToken`;
@@ -23,5 +29,8 @@ export class AccountService {
       })
     );
 
+  }
+  getToken() {
+    return this.token;
   }
 }

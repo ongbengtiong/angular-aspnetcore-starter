@@ -16,7 +16,8 @@ namespace DSO.DotnetCore.Web.ViewModels
             CreateMap<Order, OrderViewModel>()
                 .ForMember(o => o.OrderId, ex => ex.MapFrom(o => o.Id))
                 .ReverseMap();
-            CreateMap<OrderItem, OrderItemViewModel>();
+            CreateMap<OrderItem, OrderItemViewModel>()
+                .ReverseMap();
             CreateMap<Product, ProductViewModel>()
                 .ForMember(o => o.ProductId, ex => ex.MapFrom(o => o.Id))
                 .ReverseMap();

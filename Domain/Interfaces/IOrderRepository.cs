@@ -9,5 +9,6 @@ namespace DSO.DotnetCore.Domain.Repositories
         IEnumerable<Order> GetAll(bool includeItems);
         IEnumerable<Order> GetAllByUser(string userName, bool includeItems);
         Order GetByUser(string userName, int id);
+        void AddOrder(Order newEntity);
     }
 }

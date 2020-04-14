@@ -13,6 +13,10 @@ import { EntitiesComponent } from './components/entities/entities.component';
 import { EntityComponent } from './components/entity/entity.component';
 import { EntityPage } from './pages/entity/entity.page';
 import { EntityResolver, EntitiesResolver } from './resolvers';
+import { StoreModule } from '@ngrx/store';
+import { EffectsFeatureModule, EffectsModule } from '@ngrx/effects';
+import { EntityEffects } from './store/effect';
+import { reducer } from './store/reducer';
 
 
 const routes: Routes = [
@@ -44,7 +48,9 @@ const routes: Routes = [
     MaterialModule,
     BsDropdownModule,
     LayoutModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('entity', reducer),
+    EffectsModule.forFeature([EntityEffects]),
   ],
   entryComponents: [
 
