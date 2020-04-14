@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Core.Security;
+using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Web.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,23 +20,41 @@ namespace my_new_app.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-       
+
         private readonly ILogger<AccountController> _logger;
         private readonly SignInManager<User> _signinManager;
         private readonly UserManager<User> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly DataContext _dataContext;
 
-        public AccountController(ILogger<AccountController> logger, SignInManager<User> signinManager, UserManager<User> userManager, IConfiguration configuration)
+        public AccountController(ILogger<AccountController> logger, SignInManager<User> signinManager, UserManager<User> userManager, IConfiguration configuration, DataContext dataContext)
         {
             _logger = logger;
             _signinManager = signinManager;
             _userManager = userManager;
             _configuration = configuration;
+            _dataContext = dataContext;
         }
-
+        [HttpGet("users")]
+        public IActionResult GetAll()
+        {
+            List<User> result = _dataContext.Users.ToList();
+            return base.Ok(result);
+        }
+        [HttpGet("users/{userName}")]
+        public async Task<IActionResult> Get(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user != null)
+            {
+                return Ok(user);
+            }else
+            {
+                return NotFound();
+            }
+        }
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel loginModel)
-            
         {
             var user = await _userManager.FindByNameAsync(loginModel.UserName);
             var result = await _signinManager.CheckPasswordSignInAsync(user, loginModel.Password, false);
@@ -57,11 +76,11 @@ namespace my_new_app.Controllers
                     claims,
                     expires: DateTime.UtcNow.AddMinutes(30),
                     signingCredentials: credentials
-                    ) ;
+                    );
                 var results = new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration= token.ValidTo
+                    expiration = token.ValidTo
                 };
                 return Created("", results);
             }
