@@ -5,25 +5,67 @@
   font-family: 'MetricLight';
   src: url('/assets/fonts/metric/MetricLight.woff') format('woff');
 }
+
 @font-face {
   font-family: 'MetricMedium';
   src: url('/assets/fonts/metric/MetricMedium.woff') format('woff');
 }
+
 @font-face {
   font-family: 'MetricRegular';
   src: url('/assets/fonts/metric/MetricRegular.woff') format('woff');
-} 
-
-
-html,
-body {
-  min-height: 100%;  
 }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+
+html, body {
+  min-height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: MetricRegular;
 }
 
 /* Provide sufficient contrast against white background */
+.material-icons {
+  font-family: 'Material Icons';
+}
+
+.container-fluid {
+  padding-left: 0px !important;
+  padding-right: 0px !important
+}
+
+.main-content {
+  width: 100%;
+  height: calc(100vh - 75px);
+  padding: 3rem;
+}
+
+.sidenav_container.sidenav-open {
+  min-width: 250px !important;
+}
+
+.sidenav_container.sidenav-close {
+  min-width: 50px !important;
+}
+
+.sidenav-content.sidenav-open {
+  margin-left: 250px !important;
+}
+
+.sidenav-content.sidenav-close {
+  margin-left: 62px !important;
+}
+
+
+
 a {
   color: #0366d6;
 }

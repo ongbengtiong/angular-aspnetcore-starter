@@ -27,6 +27,8 @@ import { EntityEffects } from './modules/entity/store/effect';
 import { LoginComponent } from './modules/home/components/login/login.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { MaterialPage } from './modules/home/pages/material/material.page';
+import { BrowserModule } from '@angular/platform-browser';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -72,6 +74,12 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
         ]
       },
       {
+        path: 'material', component: MaterialPage, children: [
+          { path: '', component: BackgroundComponent },
+          { path: 'fetch-data', component: FetchDataComponent },
+        ]
+      },
+      {
         path: 'about',
         loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
       },
@@ -90,7 +98,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
       },
 
 
-      
+
 
     ]),
     HttpClientModule,
@@ -102,14 +110,14 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
 
     LayoutModule,
     HomeModule,
-  /*  StoreModule.forRoot(reducers, {
-      metaReducers,
-      runtimeChecks: {
-        strictStateImmutability: true,
-        strictActionImmutability: true
-      }
-    }),*/
-    
+    /*  StoreModule.forRoot(reducers, {
+        metaReducers,
+        runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true
+        }
+      }),*/
+
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

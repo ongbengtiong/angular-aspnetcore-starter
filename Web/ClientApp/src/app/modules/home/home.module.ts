@@ -17,15 +17,21 @@ import { MaterialModule } from '../../shared/material.module';
 
 import { SidebarModule } from 'primeng/sidebar'; 
 import { LoginComponent } from './components/login/login.component';
+import { MaterialPage } from './pages/material/material.page';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
  
 const routes: Routes = [
   {
     path: '', component: HomePage, children: [
       { path: '', component: BackgroundComponent },
+      { path: 'login', component: LoginComponent}
+    ]
+  },
+  {
+    path: 'material', component: MaterialPage, children: [   
       { path: 'background', component: BackgroundComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'login', component: LoginComponent}
     ]
   }
 ];
@@ -35,10 +41,11 @@ const routes: Routes = [
     HomePage,
     FetchDataComponent,
     BackgroundComponent,
-    LoginComponent
+    LoginComponent,
+    MaterialPage
   ],
   imports: [
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     // CommonModule,
     // FontAwesomeModule,
     // FormsModule,

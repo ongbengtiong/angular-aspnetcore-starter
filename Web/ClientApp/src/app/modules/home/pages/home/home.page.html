@@ -21,13 +21,16 @@
 </mat-sidenav-container>
     -->
 
- 
+
 
 <button class="navbar-toggler"
-        type="button" 
-        (click)="sidebarToggle()">Sidebar
+        type="button"
+        (click)="sidebarToggle()">
+  Sidebar
   <span class="navbar-toggler-icon"></span>
 </button>
 <app-sidebar></app-sidebar>
 
-<router-outlet></router-outlet>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

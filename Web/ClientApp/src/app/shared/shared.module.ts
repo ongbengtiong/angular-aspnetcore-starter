@@ -9,17 +9,23 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarModule } from 'primeng/sidebar';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SideBarService } from './components/sidebar/sidebar.service';
+import { LeftBarService } from './components/left-bar/left-bar.service';
+import { LeftBarComponent } from './components/left-bar/left-bar.component';
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
     CommonModule,
-   // BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     RouterModule,
-    SidebarModule
+    SidebarModule,
+    MaterialModule
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    LeftBarComponent
   ],
 
   exports: [
@@ -27,8 +33,9 @@ import { SideBarService } from './components/sidebar/sidebar.service';
     FormsModule, 
     FooterComponent,
     HeaderComponent,
-    SidebarComponent 
+    SidebarComponent,
+    LeftBarComponent
   ],
-  providers: [SideBarService]
+  providers: [SideBarService, LeftBarService]
 })
 export class SharedModule { }

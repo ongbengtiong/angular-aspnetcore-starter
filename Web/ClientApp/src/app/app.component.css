@@ -2,8 +2,8 @@
 
 
 main {
-  padding-top: 57px; /* avoid overlapping header*/
-  padding-bottom: 75px; /* avoid overlapping footer*/
-  /* min-height: calc(100vh - 75px);*/
-  margin-top: 3em;
+  /*padding-top: 57px; */ /* avoid overlapping header*/
+  /*padding-bottom: 75px; */ /* avoid overlapping footer*/
+   min-height: calc(100vh - 57px);
+  margin-top: 57px; /* avoid overlapping header*/
 }
