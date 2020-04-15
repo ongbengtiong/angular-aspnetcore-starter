@@ -26,6 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EntityEffects } from './modules/entity/store/effect';
 import { LoginComponent } from './modules/home/components/login/login.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -116,6 +117,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     {

@@ -24,6 +24,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductResolver } from './resolvers/entity.resolver';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductPage } from './pages/product/product.page';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 
@@ -67,7 +68,8 @@ const routes: Routes = [
     LayoutModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('shop', reducer),
-    EffectsModule.forFeature([ShopEffects])
+    EffectsModule.forFeature([ShopEffects]),
+    PaginationModule
   ],
   entryComponents: [
 

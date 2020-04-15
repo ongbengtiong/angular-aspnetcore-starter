@@ -6,6 +6,7 @@ import { map, switchMap, catchError } from "rxjs/operators";
 import { fromShopActions } from "./actions";
 import { undo } from "ngrx-undo";
 import { ShopService } from "../services/shop.service";
+import { QueryParams } from "../../../shared/models/query-params";
 
 @Injectable()
 export class ShopEffects {
@@ -13,11 +14,12 @@ export class ShopEffects {
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromShopActions.loadProducts),
-      switchMap(() =>
-        this.shopService.getProducts().pipe(
+      switchMap(({ queryParams }) =>
+        this.shopService.getProducts(queryParams).pipe(
           map((res: any) => {
             return fromShopActions.loadProductsSuccess({
-              data: res
+              data: res.data,
+              pagination: res.pagination
             });
           }),
           catchError(error => {

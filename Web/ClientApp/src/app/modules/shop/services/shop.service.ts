@@ -7,6 +7,7 @@ import { Product } from "../models/product";
 import { Order, OrderItem } from "../models/order";
 import { AccountService } from "../../../shared/services/account.service";
 import { map } from "rxjs/operators";
+import { QueryParams } from "../../../shared/models/query-params";
 
 
 @Injectable({
@@ -36,12 +37,26 @@ export class ShopService {
     });
 
   }
-  getProducts() {
-    return this.http.get(`${this.baseProductsURL}`, {
+
+  // https://stackoverflow.com/questions/45505619/angular-4-3-3-httpclient-how-get-value-from-the-header-of-a-response
+  getProducts(queryParams: QueryParams) {
+    const queryString = `sort=${queryParams.sort}&page=${queryParams.page}&pageSize=${queryParams.pageSize}`;
+    return this.http.get<Product[]>(`${this.baseProductsURL}?${queryString}`, {
       headers: {
         "Authorization": "Bearer " + this.accountService.getToken()
-      }
-    });
+      },
+      observe: 'response'
+    }).pipe(
+      map(response => {
+        const paginationString = response.headers.get('X-Pagination');
+        const pagination = JSON.parse(paginationString);
+        return {
+          data: response.body,
+          pagination: pagination
+        }
+
+      })
+    );
   }
   getProduct(id: number) {
     return this.http.get(`${this.baseProductsURL}/${id}`);

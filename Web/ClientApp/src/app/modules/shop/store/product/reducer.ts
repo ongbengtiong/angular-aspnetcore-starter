@@ -9,6 +9,7 @@ export const PRODUCT_FEATURE_KEY = "product";
 export interface ProductState extends EntityState<Product> {
   loaded: boolean;
   error?: Error | any;
+  pagination: any;
 }
 
 export const productAdapter: EntityAdapter<Product> = createEntityAdapter<Product>({
@@ -23,6 +24,10 @@ export interface EntityPartialState {
 export const productInitialState: ProductState = productAdapter.getInitialState({
   // Additional entity state properties
   loaded: false,
-  error: null
+  error: null,
+  pagination: {
+    totalCount: 0,
+    pageSize: 0
+  }
 });
- 
+

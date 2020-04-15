@@ -5,41 +5,46 @@
 
   <div class=" col-md-12">
 
-
-    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="entities$">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Size</th>
-          <th>Description</th>
-          <th>ImageUrl</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let entity of (entities$ | async)">
-          <td>{{entity.productId}}</td>
-          <td>{{entity.title}}</td>
-          <td>{{entity.category}}</td>
-          <td>{{entity.price}}</td>
-          <td>{{entity.size}}</td>
-          <td>{{entity.title}}</td>
-          <td>{{entity.artDescription}}</td>
-          <td><img [src]="entity.imageUrl" class="img-thumbnail checkout-thumb" /></td>
+    <div *ngIf="entities$">
 
 
+      <table class='table table-striped' aria-labelledby="tableLabel">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Description</th>
+            <th>ImageUrl</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entity of (entities$); trackBy: trackByMethod">
+            <td>{{entity.productId}}</td>
+            <td>{{entity.title}}</td>
+            <td>{{entity.category}}</td>
+            <td>{{entity.price}}</td>
+            <td>{{entity.size}}</td>
+            <td>{{entity.title}}</td>
+            <td>{{entity.artDescription}}</td>
+            <td><img [src]="entity.imageUrl" class="img-thumbnail checkout-thumb thumbnail" /></td>
 
 
-          <td>
-            <a [routerLink]="['edit', entity.productId]">Edit</a> |
-            <a href="javascript:void(0)" (click)="delete(entity.productId)">Delete</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+
+            <td>
+              <a [routerLink]="['edit', entity.productId]">Edit</a> |
+              <a href="javascript:void(0)" (click)="delete(entity.productId)">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pagination [totalItems]="pagination.totalCount" (pageChanged)="pageChanged($event)" [boundaryLinks]="true" [itemsPerPage]="pagination.pageSize"></pagination>
+    </div>
   </div>
 </div>
 

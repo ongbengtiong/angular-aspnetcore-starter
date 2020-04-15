@@ -91,16 +91,13 @@ const _reducer = createReducer(
 
 
 
-  on(fromShopActions.loadProductsSuccess, (state, { data }) => {
-    const products = productAdapter.addAll(data, {
-      ...state.products,
-      loaded: true
-    })
+  on(fromShopActions.loadProductsSuccess, (state, { data, pagination }) => {
     const newState =    {
       ...state,
       products: productAdapter.addAll(data, {
         ...state.products,
-        loaded: true
+        loaded: true,
+        pagination: pagination
       })
     };
     return newState;

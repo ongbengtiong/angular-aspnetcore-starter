@@ -2,6 +2,7 @@ import { createAction, props } from "@ngrx/store";
 
 import { Order } from "../models/order";
 import { Product } from "../models/product";
+import { QueryParams } from "../../../shared/models/query-params";
 
 
 export enum ProductActionTypes {
@@ -44,11 +45,14 @@ export enum OrderActionTypes {
 
 
 
-export const loadProducts = createAction(ProductActionTypes.LoadProducts);
+export const loadProducts = createAction(
+  ProductActionTypes.LoadProducts,
+  props<{ queryParams: QueryParams }>()
+);
 
 export const loadProductsSuccess = createAction(
   ProductActionTypes.LoadProductsSuccess,
-  props<{ data: Product[] }>()
+  props<{ data: Product[], pagination: any }>()
 );
 
 export const loadProductsFail = createAction(

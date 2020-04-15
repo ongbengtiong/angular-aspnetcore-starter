@@ -56,8 +56,8 @@ export class ProductComponent implements OnInit {
       // Otherwise add the entity as new
       this.store.dispatch(fromShopActions.createProduct({ new: entity }));
     }
-    this.zone.run(() => { this.router.navigate(['.']); });
-    //this.router.navigate(["entities"]);
+    //this.zone.run(() => { this.router.navigate(['products']); });
+    this.router.navigate(["/shop/products"]);
   }
 
   private initForm(entity: Product) {

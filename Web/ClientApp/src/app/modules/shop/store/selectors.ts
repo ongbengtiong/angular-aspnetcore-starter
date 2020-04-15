@@ -22,7 +22,10 @@ export const selectProductIds = createSelector(
 export const selectAllProducts = createSelector(
   getProductState,
   (state: ShopState) => {
-    return Object.values(state.products.entities);
+    return {
+      data: Object.values(state.products.entities),
+      pagination: state.products.pagination
+    }
   }
 );
 
