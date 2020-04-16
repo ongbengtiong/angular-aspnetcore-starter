@@ -22,8 +22,9 @@ export const selectProductIds = createSelector(
 export const selectAllProducts = createSelector(
   getProductState,
   (state: ShopState) => {
+    const data = state.products.ids.map((id: string | number)=>state.products.entities[id]);
     return {
-      data: Object.values(state.products.entities),
+      data: data,
       pagination: state.products.pagination
     }
   }

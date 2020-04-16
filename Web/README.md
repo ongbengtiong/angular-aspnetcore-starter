@@ -56,3 +56,7 @@ NGRX Multiple entities: https://medium.com/capital-one-tech/multiple-entities-in
 
 Use Angular Material Table:
 https://blog.angular-university.io/angular-material-data-table/
+https://medium.com/@smtshootnick/angular-material-table-with-ngrx-server-pagination-filtering-and-sorting-e156fbd8926a
+
+Use Material Sidebar: [done]
+https://stackblitz.com/edit/angular-wmkznw?file=src%2Fapp%2Fcomponents%2Fheader%2Fheader.component.html
