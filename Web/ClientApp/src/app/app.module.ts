@@ -117,13 +117,13 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
           strictActionImmutability: true
         }
       }),*/
-
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot()
   ],
