@@ -5,7 +5,7 @@ import { ORDER_FEATURE_KEY } from "./order/reducer";
 import { ShopState } from "./reducer";
 
 // get the selectors
-// const { selectIds, selectAll, selectTotal } = productAdapter.getSelectors();
+const { selectIds, selectAll, selectTotal } = productAdapter.getSelectors();
 
 /******** Products  */
 // Lookup the 'Product' feature state managed by NgRx
@@ -22,7 +22,10 @@ export const selectProductIds = createSelector(
 export const selectAllProducts = createSelector(
   getProductState,
   (state: ShopState) => {
-    const data = state.products.ids.map((id: string | number)=>state.products.entities[id]);
+    const data = [];
+    state.products.ids.forEach(id => {
+      data.push(state.products.entities[id]);
+    });
     return {
       data: data,
       pagination: state.products.pagination
