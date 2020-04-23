@@ -49,20 +49,20 @@ export class ProductsComponent implements OnInit {
       this.pagination = value.pagination;
       this.initializeData(entities);
 
-      // this.entities$ = value.data;
+      this.entities$ = value.data;
 
     });
   }
   trackByMethod(index: number, el: Product): number {
     return el.productId;
   }
-  /* pageChanged($event) {
-     const queryParams = new QueryParams()
-     queryParams.page = $event.page;
-     queryParams.pageSize = $event.itemsPerPage;
- 
-     this.store.dispatch(fromShopActions.loadProducts({ queryParams: queryParams }));
-   }*/
+  pageChanged($event) {
+    const queryParams = new QueryParams()
+    queryParams.page = $event.page;
+    queryParams.pageSize = $event.itemsPerPage;
+
+    this.store.dispatch(fromShopActions.loadProducts({ queryParams: queryParams }));
+  }
   public ngAfterViewInit(): void {
     this.loadEntities();
     let filter$ = this.filterSubject.pipe(
@@ -111,7 +111,7 @@ export class ProductsComponent implements OnInit {
     this.store.dispatch(fromShopActions.loadProducts({
       queryParams: <QueryParams>{
         filter: this.filter.toLocaleLowerCase(),
-        page: this.paginator.pageIndex+1,
+        page: this.paginator.pageIndex + 1,
         pageSize: this.paginator.pageSize,
         sort: sort
       }

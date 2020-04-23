@@ -6,7 +6,7 @@
     <input class="dc-search" placeholder="Search Product"
            (keyup)="filterSubject.next($event.target.value)">
 
-    <table mat-table class="products-table mat-elevation-z8" [dataSource]="dataSource" matSort style="width: 100%" [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
+    <table mat-table class="products-table mat-elevation-z0" [dataSource]="dataSource" matSort style="width: 100%" [matSortActive]="defaultSort.active" [matSortDirection]="defaultSort.direction">
 
       <ng-container matColumnDef="productId">
         <th mat-header-cell mat-sort-header *matHeaderCellDef>#</th>
@@ -69,13 +69,17 @@
       <ng-container>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="product-row"></tr>
       </ng-container>
-
+       
     </table>
 
   </div>
   <mat-paginator [length]="pagination.totalCount" [pageSize]="pagination.pageSize" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
 </div>
-<!--
+
+  
+
+
+
 <div class="row">
 
   <div class=" col-md-12">
@@ -121,4 +125,3 @@
     </div>
   </div>
 </div>
--->
