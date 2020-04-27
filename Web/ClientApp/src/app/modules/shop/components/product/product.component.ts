@@ -1,11 +1,11 @@
-import { Component, OnInit, NgZone } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { Store } from "@ngrx/store";
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { fromShopActions } from '../../store/actions';
 
-import { Product } from "../../models/product";
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product',
@@ -15,7 +15,7 @@ import { Product } from "../../models/product";
 export class ProductComponent implements OnInit {
   public entityForm: FormGroup;
   public isEdit: boolean;
-  public title = "Product";
+  public title = 'Product';
 
   // NgZone: https://github.com/angular/angular/issues/20290
   constructor(
@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const entity = this.route.snapshot.data["entity"];
+    const entity = this.route.snapshot.data['entity'];
 
     this.isEdit = entity ? true : false;
     this.initForm(entity || {});
@@ -56,8 +56,8 @@ export class ProductComponent implements OnInit {
       // Otherwise add the entity as new
       this.store.dispatch(fromShopActions.createProduct({ new: entity }));
     }
-    //this.zone.run(() => { this.router.navigate(['products']); });
-    this.router.navigate(["/shop/products"]);
+    // this.zone.run(() => { this.router.navigate(['products']); });
+    this.router.navigate(['/shop/products']);
   }
 
   private initForm(entity: Product) {

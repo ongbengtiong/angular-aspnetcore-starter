@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,11 +50,43 @@ namespace my_new_app.Controllers
             if (user != null)
             {
                 return Ok(user);
-            }else
+            } else
             {
                 return NotFound();
             }
         }
+        [HttpPost("create-user")]
+        public IActionResult CreateUser( ) {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine("D:\\", "Temp");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(folderName, fileName);
+
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        // file.CopyTo(stream);
+                    }
+
+                    return Ok(new { dbPath });
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel loginModel)
         {

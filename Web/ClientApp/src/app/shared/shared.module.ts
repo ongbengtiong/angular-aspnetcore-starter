@@ -13,6 +13,7 @@ import { LeftBarService } from './components/left-bar/left-bar.service';
 import { LeftBarComponent } from './components/left-bar/left-bar.component';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FileUploadService } from './services/file-upload.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,6 +37,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     LeftBarComponent
   ],
-  providers: [SideBarService, LeftBarService]
+  providers: [SideBarService, LeftBarService, FileUploadService]
 })
 export class SharedModule { }

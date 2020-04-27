@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AccountService {
-  
+
   private token: string = "";
   private tokenExpiration: Date = new Date();
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private configService: ConfigService) { }

@@ -25,6 +25,8 @@ import { ProductResolver } from './resolvers/entity.resolver';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductPage } from './pages/product/product.page';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { FileUploadService } from 'src/app/shared/services/file-upload.service';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 
 
@@ -58,7 +60,8 @@ const routes: Routes = [
     CartComponent,
     ProductPage,
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    ImageUploadComponent
   ],
   imports: [
     ReactiveFormsModule,
