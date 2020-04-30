@@ -1,19 +1,26 @@
 
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { ConfigService } from "../../../shared/services/config.service";
-import { Product } from "../models/product";
-import { Order, OrderItem } from "../models/order";
-import { AccountService } from "../../../shared/services/account.service";
-import { map } from "rxjs/operators";
-import { QueryParams } from "../../../shared/models/query-params";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { ConfigService } from '../../../shared/services/config.service';
+import { Product } from '../models/product';
+import { Order, OrderItem } from '../models/order';
+import { AccountService } from '../../../shared/services/account.service';
+import { map, catchError } from 'rxjs/operators';
+import { QueryParams } from '../../../shared/models/query-params';
+import { of, Observable } from 'rxjs';
+import { Category } from '../models/category';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ShopService {
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-type': 'application/json' }),
+    withCredentials: true
+  };
   private baseURL: string;
   private baseProductsURL; string;
   private baseOrdersURL: string;
@@ -32,7 +39,7 @@ export class ShopService {
   createProduct(entity: Product) {
     return this.http.post(`${this.baseProductsURL}`, entity, {
       headers: {
-        "Authorization": "Bearer " + this.accountService.getToken()
+        'Authorization': 'Bearer ' + this.accountService.getToken()
       }
     });
 
@@ -43,7 +50,7 @@ export class ShopService {
     const queryString = `sort=${queryParams.sort}&page=${queryParams.page}&pageSize=${queryParams.pageSize}`;
     return this.http.get<Product[]>(`${this.baseProductsURL}?${queryString}`, {
       headers: {
-        "Authorization": "Bearer " + this.accountService.getToken()
+        'Authorization': 'Bearer ' + this.accountService.getToken()
       },
       observe: 'response'
     }).pipe(
@@ -53,7 +60,7 @@ export class ShopService {
         return {
           data: response.body,
           pagination: pagination
-        }
+        };
 
       })
     );
@@ -90,8 +97,8 @@ export class ShopService {
       this.order.orderNumber = this.order.orderDate.getFullYear().toString() + this.order.orderDate.getTime().toString();
     }
 
-    return this.http.post("/api/orders", this.order, {
-      headers: new HttpHeaders({ "Authorization": "Bearer " + this.accountService.getToken() })
+    return this.http.post('/api/orders', this.order, {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.accountService.getToken() })
     })
       .pipe(
         map(response => {
@@ -102,7 +109,7 @@ export class ShopService {
 
   public AddToOrder(product: Product) {
 
-    let item: OrderItem = this.order.items.find(i => i.productId == product.productId);
+    let item: OrderItem = this.order.items.find(i => i.productId === product.productId);
 
     if (item) {
 
@@ -139,6 +146,23 @@ export class ShopService {
 
   deleteEntity(id: number) {
     return this.http.delete(`${this.baseURL}/entities/${id}`);
-  }
+  } 
   */
+
+  searchCategory(value: string): Observable<Category[]> {
+    if (value === '') { return of([]); }
+    const url = `${this.baseProductsURL}/categories/get?filter=${value}`;
+    return this.http.post(url, this.httpOptions)
+      .pipe(
+        map((res: Category[]) => {
+          return res; 
+        }),
+        catchError((error) => {
+          console.group(`Posting to ${url}`);
+          console.error(error);
+          console.groupEnd();
+          return of([]);
+        })
+      );
+  }
 }

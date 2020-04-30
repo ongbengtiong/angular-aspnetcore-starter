@@ -27,8 +27,9 @@ import { ProductPage } from './pages/product/product.page';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FileUploadService } from 'src/app/shared/services/file-upload.service';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-
-
+import { ToastrModule } from 'ngx-toastr'; 
+import { MccScrollspyModule } from 'material-community-components'; 
+ 
 
 const routes: Routes = [
   {
@@ -61,7 +62,7 @@ const routes: Routes = [
     ProductPage,
     ProductComponent,
     ProductsComponent,
-    ImageUploadComponent
+    ImageUploadComponent, 
   ],
   imports: [
     ReactiveFormsModule,
@@ -72,7 +73,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature('shop', reducer),
     EffectsModule.forFeature([ShopEffects]),
-    PaginationModule
+    PaginationModule,
+    ToastrModule,
+    MccScrollspyModule
   ],
   entryComponents: [
 

@@ -1,91 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
 @font-face {
-  font-family: 'MetricLight';
-  src: url('/assets/fonts/metric/MetricLight.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'MetricMedium';
-  src: url('/assets/fonts/metric/MetricMedium.woff') format('woff');
+    font-family: 'MetricLight';
+    src: url('/assets/fonts/metric/MetricLight.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'MetricRegular';
-  src: url('/assets/fonts/metric/MetricRegular.woff') format('woff');
+    font-family: 'MetricMedium';
+    src: url('/assets/fonts/metric/MetricMedium.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+    font-family: 'MetricRegular';
+    src: url('/assets/fonts/metric/MetricRegular.woff') format('woff');
 }
 
-
-html, body {
-  min-height: 100%;
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: MetricRegular;
+html,
+body {
+    min-height: 100%;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: MetricRegular;
+}
+
 
 /* Provide sufficient contrast against white background */
+
 .material-icons {
-  font-family: 'Material Icons';
+    font-family: 'Material Icons';
 }
 
 .container-fluid {
-  padding-left: 0px !important;
-  padding-right: 0px !important
+    padding-left: 0px !important;
+    padding-right: 0px !important
 }
 
 .main-content {
-  width: 100%;
-  height: calc(100vh - 75px);
-  padding: 3rem;
+    width: 100%;
+    xheight: calc(100vh - 75px);
+    margin-bottom: 57px;
+    padding: 3rem;
 }
 
 .sidenav_container.sidenav-open {
-  min-width: 250px !important;
+    min-width: 250px !important;
 }
 
 .sidenav_container.sidenav-close {
-  min-width: 50px !important;
+    min-width: 50px !important;
 }
 
 .sidenav-content.sidenav-open {
-  margin-left: 250px !important;
+    margin-left: 250px !important;
 }
 
 .sidenav-content.sidenav-close {
-  margin-left: 62px !important;
+    margin-left: 62px !important;
 }
 
-
-
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 code {
-  color: #e01a76;
+    color: #e01a76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+}
+
+
+/*****/
+
+
+/* https://stackoverflow.com/questions/20593224/how-do-i-remove-blue-selected-outline-on-buttons/20593333 */
+
+button:focus {
+    outline: none;
+}
+
+.mat-raised-button {
+    border-radius: 2rem !important;
+}
+
+.mat-button-toggle-group {
+    border-radius: 3rem !important;
+}
+
+.mat-expansion-panel-header-title {
+    font-size: 1.2rem;
 }

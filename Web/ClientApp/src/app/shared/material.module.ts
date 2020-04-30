@@ -1,5 +1,5 @@
- 
- 
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -29,7 +29,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
-;
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 const materialModules = [
   CdkTreeModule,
@@ -58,9 +60,12 @@ const materialModules = [
   MatButtonToggleModule,
   MatTreeModule,
   OverlayModule,
-  PortalModule
+  PortalModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  NgxMatSelectSearchModule
 ];
-@NgModule({ 
+@NgModule({
   imports: [
     ...materialModules
   ],

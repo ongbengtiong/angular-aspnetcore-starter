@@ -1,0 +1,17 @@
+.menu {
+  width: 200px;
+  background: #ffffff;
+  position: fixed;
+}
+
+.menu a {
+  cursor: pointer;
+}
+.menu a.focused {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+#area {
+  margin-left: 230px;
+}

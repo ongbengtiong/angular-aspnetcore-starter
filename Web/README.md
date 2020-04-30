@@ -49,14 +49,26 @@ Identity:
 
 
 Frontend:
-NGRX Feature Store: https://itnext.io/ngrx-best-practices-for-enterprise-angular-applications-6f00bcdf36d7
-https://dzone.com/articles/separating-state-into-angular-modules-with-ngrx
-NGRX Multiple entities: https://medium.com/capital-one-tech/multiple-entities-in-a-single-ngrx-8-state-ed5fd082c3f0
+NGRX Feature Store:
+- https://itnext.io/ngrx-best-practices-for-enterprise-angular-applications-6f00bcdf36d7
+- https://dzone.com/articles/separating-state-into-angular-modules-with-ngrx
+NGRX Multiple entities:
+- https://medium.com/capital-one-tech/multiple-entities-in-a-single-ngrx-8-state-ed5fd082c3f0
 
 
 Use Angular Material Table:
-https://blog.angular-university.io/angular-material-data-table/
-https://medium.com/@smtshootnick/angular-material-table-with-ngrx-server-pagination-filtering-and-sorting-e156fbd8926a
+- https://blog.angular-university.io/angular-material-data-table/
+- https://medium.com/@smtshootnick/angular-material-table-with-ngrx-server-pagination-filtering-and-sorting-e156fbd8926a
 
 Use Material Sidebar: [done]
-https://stackblitz.com/edit/angular-wmkznw?file=src%2Fapp%2Fcomponents%2Fheader%2Fheader.component.html
+- https://stackblitz.com/edit/angular-wmkznw?file=src%2Fapp%2Fcomponents%2Fheader%2Fheader.component.html
+
+Material ScrollSpy [done]
+- https://github.com/tiaguinho/material-community-components
+
+Material Autocomplete Select
+- ngx-mat-select-search
+
+
+Flex Layout
+

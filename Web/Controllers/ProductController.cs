@@ -146,7 +146,33 @@ namespace DSO.DotnetCore.Web.Controllers
 
             //return "Get: " + DateTime.Now.ToLongTimeString();
         }
+        [HttpPost]
+        [Route("categories/get")]
+        //[ProducesErrorResponseType()]
+        //[ProducesErrorResponseType(400)]
+        public ActionResult GetAllCategories( string filter)  //, string sort = "id", int page = 1, int pageSize = 3)
+        {
+            var categories =new string[] { "asdsdfdsf", "sdfsdfsdfsdf", "qwehf456", "xbftjr", "rtertert" };
+            var x = new object[5];
 
+            x[0] = new { id = "1", displayName = "sdasdasda" };
+            x[1] = new { id = "2", displayName = "fgdfgnvnbvbt" };
+            x[2] = new { id = "3", displayName = "gjkghjghfgh" };
+            x[3] = new { id = "4", displayName = "gkfgjfghgfh" };
+            x[4] = new { id = "5", displayName = "fgdghfghfgh" };
+
+            try
+            {
+                var result = categories.Where(o => o.Contains(filter)).Select(o => new { id = 1, displayName = o });
+                return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Error", ex);
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpGet]
         [Route("", Name = "GetProducts")]
         //[ProducesErrorResponseType()]
