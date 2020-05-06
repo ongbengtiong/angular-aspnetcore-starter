@@ -10,6 +10,7 @@ import { MaterialModule } from './material.module';
 import { FileUploadService } from './services/file-upload.service';
 import { AccordionAnchorDirective, AccordionLinkDirective, AccordionDirective } from './components/accordion';
 import { MenuItems } from './components/menu-items/menu-items';
+import { WidgetCardComponent } from './components/widget-card.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { MenuItems } from './components/menu-items/menu-items';
     FooterComponent,
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
+    WidgetCardComponent
   ],
 
   exports: [
@@ -31,7 +33,8 @@ import { MenuItems } from './components/menu-items/menu-items';
     FooterComponent,
     AccordionAnchorDirective,
     AccordionLinkDirective,
-    AccordionDirective
+    AccordionDirective,
+    WidgetCardComponent
   ],
   providers: [FileUploadService, MenuItems,
     {

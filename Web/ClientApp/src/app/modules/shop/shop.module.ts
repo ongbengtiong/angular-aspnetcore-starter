@@ -9,7 +9,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../../shared/material.module';
-//import { NgxBootstrapModule } from '../../shared/ngx-bootstrap.module';
+// import { NgxBootstrapModule } from '../../shared/ngx-bootstrap.module';
 // import { EntityResolver, EntitiesResolver } from './resolvers';
 import { ShopPage } from './pages/shop/shop.page';
 import { ShopFrontPage } from './pages/shop-front/shop-front.page';
@@ -36,17 +36,17 @@ const routes: Routes = [
     path: '', component: ShopPage, children: [
       { path: '', pathMatch: 'full', component: ShopFrontPage },
       { path: 'shop-front', component: ShopFrontPage },
-      { path: "checkout", component: CheckoutPage },
+      { path: 'checkout', component: CheckoutPage },
     ]
   },
   {
-    path: "products", component: ProductPage, children: [
-      { path: "", component: ProductsComponent },
+    path: 'products', component: ProductPage, children: [
+      { path: '', component: ProductsComponent },
       {
-        path: "edit/:id", component: ProductComponent,
+        path: 'edit/:id', component: ProductComponent,
         resolve: { entity: ProductResolver }
       },
-      { path: "add", component: ProductComponent }
+      { path: 'add', component: ProductComponent }
     ]
   },
 
@@ -68,7 +68,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     SharedModule,
     MaterialModule,
-    //NgxBootstrapModule,
+    // NgxBootstrapModule,
     LayoutModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('shop', reducer),

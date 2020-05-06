@@ -1,37 +1,37 @@
-<h2>Checkout</h2>
-<div class="row">
-  <div class="col-md-12">
-    <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+<mat-card>
+    <mat-card-content>
 
-    <table class="table table-bordered table-hover">
-      <tr *ngFor="let o of shopService.order.items">
-        <td><img [src]="o.productImageUrl" alt="o.productTitle" class="img-thumbnail checkout-thumb" /></td>
-        <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>
-        <td>{{ o.quantity }}</td>
-        <td>{{ o.unitPrice|currency:'USD':"symbol" }}</td>
-        <td>{{ (o.unitPrice * o.quantity)|currency:'USD':"symbol" }}</td>
-      </tr>
-    </table>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 offset-md-8 text-right">
-    <table class="table table-condensed">
-      <tr>
-        <td class="text-right">Subtotal</td>
-        <td class="text-right">{{ shopService.order.subtotal|currency:'USD':"symbol" }}</td>
-      </tr>
-      <tr>
-        <td class="text-right">Shipping</td>
-        <td class="text-right">$ 0.00</td>
-      </tr>
-      <tr>
-        <td class="text-right">Total:</td>
-        <td class="text-right">{{ shopService.order.subtotal|currency:'USD':"symbol" }}</td>
-      </tr>
-    </table>
-    <button class="btn btn-success" (click)="onCheckout()"  [disabled]="shopService.order.items.length <= 0" >Complete Purchase</button>
-    <a routerLink="/" class="btn btn-info">Cancel</a>
-  </div>
+        <h2>Checkout</h2>
+        <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
 
-</div>
+        <table class="table table-bordered table-hover">
+            <tr *ngFor="let o of shopService.order.items">
+                <td><img [src]="o.productImageUrl" alt="o.productTitle" class="img-thumbnail checkout-thumb" /></td>
+                <td>{{ o.productCategory }}({{ o.productSize }}) - {{ o.productArtist }}: {{ o.productTitle }}</td>
+                <td>{{ o.quantity }}</td>
+                <td>{{ o.unitPrice|currency:'USD':"symbol" }}</td>
+                <td>{{ (o.unitPrice * o.quantity)|currency:'USD':"symbol" }}</td>
+            </tr>
+        </table>
+
+
+        <table class="table table-condensed">
+            <tr>
+                <td class="text-right">Subtotal</td>
+                <td class="text-right">{{ shopService.order.subtotal|currency:'USD':"symbol" }}</td>
+            </tr>
+            <tr>
+                <td class="text-right">Shipping</td>
+                <td class="text-right">$ 0.00</td>
+            </tr>
+            <tr>
+                <td class="text-right">Total:</td>
+                <td class="text-right">{{ shopService.order.subtotal|currency:'USD':"symbol" }}</td>
+            </tr>
+        </table>
+        <button mat-raised-button color="primary" (click)="onCheckout()" [disabled]="shopService.order.items.length <= 0">Complete Purchase</button>
+        <a routerLink="/" mat-button color="danger">Cancel</a>
+
+
+    </mat-card-content>
+</mat-card>

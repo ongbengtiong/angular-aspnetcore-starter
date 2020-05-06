@@ -28,7 +28,7 @@ export class SpinnerComponent implements OnDestroy {
   public isSpinnerVisible = true;
 
   @Input()
-  public backgroundColor = 'rgba(0, 115, 170, 0.69)';
+  public backgroundColor = 'rgba(0, 115, 170, 0.9)';
 
   constructor(
     private router: Router,

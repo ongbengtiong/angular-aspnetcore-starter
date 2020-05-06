@@ -33,7 +33,7 @@
     <!-- https://stackblitz.com/edit/angular-side-nav-dynamic-expansive-menu?file=app%2Fsidenav-responsive-example.html -->
     <span *ngFor="let menuItem of menuItems.getMenuitem()">
         <span *ngIf="menuItem.subMenus && menuItem.subMenus.length > 0">
-            <mat-accordion>
+            <mat-accordion multi="false">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -46,8 +46,7 @@
                     </mat-expansion-panel-header>
                     <span *ngFor="let child of menuItem.subMenus">
                         <mat-list-item appAccordionLink routerLinkActive="selected" group="{{child.state}}">
-                            <a class="" appAccordionToggle [routerLink]="getRoute(child)"
-                                *ngIf="child.type === 'link'">
+                            <a class="" appAccordionToggle [routerLink]="getRoute(child)" *ngIf="child.type === 'link'">
                                 <mat-icon>{{ child.icon }}</mat-icon>
                                 <span class="navigation-item-label">{{ child.name }}</span>
     <span fxFlex></span>

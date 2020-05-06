@@ -40,7 +40,7 @@ import { AppTitleService } from './shared/services/app-title.service';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
- 
+
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -91,12 +91,12 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
             loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
           },
           {
-            path: '',
+            path: 'components',
             loadChildren:
               () => import('./modules/material-component/material.module').then(m => m.MaterialComponentsModule)
           },
           {
-            path: '',
+            path: 'home',
             //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
             component: HomePage, children: [
               { path: '', component: BackgroundComponent },
@@ -182,7 +182,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     },
     Title,
     AppTitleService
-  
+
   ],
   bootstrap: [AppComponent]
 })

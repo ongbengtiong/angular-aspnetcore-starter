@@ -2,42 +2,73 @@
 <!-- Simple four boxes Row -->
 <!-- ============================================================== -->
 <div fxLayout="row wrap">
-    <!-- column -->    
+    <!-- column -->
+    <div fxFlex.gt-lg="25" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="50">
+        <mat-card>
+            <app-widget-card label="asdasd" percentage="34" total="54"></app-widget-card>
+        </mat-card>
+    </div>
+    <!-- column -->
+    <div fxFlex.gt-lg="25" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="50">
+        <mat-card>
+            <app-widget-card label="asdasd" percentage="34" total="54"></app-widget-card>
+        </mat-card>
+    </div>
+    <!-- column -->
+    <div fxFlex.gt-lg="25" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="50">
+        <mat-card>
+            <app-widget-card label="asdasd" percentage="34" total="54"></app-widget-card>
+        </mat-card>
+    </div>
+    <!-- column -->
+    <div fxFlex.gt-lg="25" fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="50">
+        <mat-card>
+            <app-widget-card label="asdasd" percentage="34" total="54"></app-widget-card>
+        </mat-card>
+    </div>
+</div>
+
+
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+<div fxLayout="row wrap">
+    <!-- column -->
     <div fxFlex.gt-lg="66" fxFlex.gt-md="66" fxFlex.gt-xs="100" fxFlex="100">
         <mat-card>
             <mat-card-content>
                 <div class="d-flex flex-wrap">
                     <div>
                         <mat-card-title>Sales Overview</mat-card-title>
-                         <mat-card-subtitle>Ample Admin Vs Material Admin</mat-card-subtitle> 
-                     </div>
+                        <mat-card-subtitle>Ample Admin Vs Material Admin</mat-card-subtitle>
+                    </div>
                     <div class="ml-auto">
                         <ul class="list-inline">
                             <li>
-                                <h6 class="text-success m-0"><i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>Ample</h6> </li>
+                                <h6 class="text-success m-0"><i class="mdi mdi-checkbox-blank-circle font-10 m-r-10 "></i>Ample</h6>
+                            </li>
                             <li>
-                                <h6 class=" text-info m-0"><i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Pixel</h6> </li>
+                                <h6 class=" text-info m-0"><i class="mdi mdi-checkbox-blank-circle font-10 m-r-10"></i>Pixel</h6>
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="barchrt" style="height:360px;">
-                    <x-chartist class="" [data]="barChart1.data" [type]="barChart1.type" [options]="barChart1.options" [responsiveOptions]="barChart1.responsiveOptions"
-                        [events]="barChart1.events"> </x-chartist>
+                    <x-chartist class="" [data]="barChart1.data" [type]="barChart1.type" [options]="barChart1.options" [responsiveOptions]="barChart1.responsiveOptions" [events]="barChart1.events"> </x-chartist>
                 </div>
             </mat-card-content>
         </mat-card>
     </div>
-    <!-- column -->    
-    <!-- column -->    
-    <div fxFlex.gt-lg="33" fxFlex.gt-md="33"  fxFlex.gt-xs="100" fxFlex="100">
+    <!-- column -->
+    <!-- column -->
+    <div fxFlex.gt-lg="33" fxFlex.gt-md="33" fxFlex.gt-xs="100" fxFlex="100">
         <mat-card>
             <mat-card-content>
                 <mat-card-title>Our Visitors</mat-card-title>
                 <mat-card-subtitle>Different Devices Used to Visit</mat-card-subtitle>
                 <div class="piechart">
-                    <x-chartist class="" [data]="donuteChart1.data" [type]="donuteChart1.type" [options]="donuteChart1.options" [responsiveOptions]="donuteChart1.responsiveOptions"
-                        [events]="donuteChart1.events"> </x-chartist>
+                    <x-chartist class="" [data]="donuteChart1.data" [type]="donuteChart1.type" [options]="donuteChart1.options" [responsiveOptions]="donuteChart1.responsiveOptions" [events]="donuteChart1.events"> </x-chartist>
                 </div>
             </mat-card-content>
             <hr>
@@ -59,7 +90,7 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <!-- column -->    
+    <!-- column -->
 </div>
 
 <!-- ============================================================== -->
@@ -106,48 +137,42 @@
                 <div class="message-widget contact-widget">
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user"
-                                class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                        <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span>
                         </div>
                     </a>
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user"
-                                class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                        <div class="user-img"> <img src="assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span>
                         </div>
                     </a>
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <span class="round">A</span> <span
-                                class="profile-status away pull-right"></span> </div>
+                        <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Arijit Sinh</h5> <span class="mail-desc">cruise1298.fiplip@gmail.com</span>
                         </div>
                     </a>
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user"
-                                class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                        <div class="user-img"> <img src="assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span>
                         </div>
                     </a>
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <img src="assets/images/users/5.jpg" alt="user"
-                                class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                        <div class="user-img"> <img src="assets/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Andrew</h5> <span class="mail-desc">and@gmail.com</span>
                         </div>
                     </a>
                     <!-- Message -->
                     <a href="#">
-                        <div class="user-img"> <img src="assets/images/users/6.jpg" alt="user"
-                                class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                        <div class="user-img"> <img src="assets/images/users/6.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                         <div class="mail-contnet">
                             <h5>Jonathan Jones</h5> <span class="mail-desc">jj@gmail.com</span>
                         </div>

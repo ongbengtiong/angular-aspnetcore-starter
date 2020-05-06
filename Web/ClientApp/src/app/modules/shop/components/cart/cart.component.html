@@ -19,4 +19,4 @@
         </tr>
     </tbody>
 </table>
-<button class="btn btn-success" *ngIf="shopService.order.items.length > 0" (click)="onCheckout()">Checkout</button>
+<button mat-raised-button color="primary" *ngIf="shopService.order.items.length > 0" (click)="onCheckout()">Checkout</button>

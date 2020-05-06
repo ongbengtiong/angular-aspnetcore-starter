@@ -11,15 +11,28 @@ export interface Menu {
 const MENUITEMS = [
   { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer', subMenus: [] },
   {
-    state: 'modules', type: 'link', name: 'Modules', icon: 'view_comfy', subMenus: [
-      { state: 'material/fetch-data', type: 'link', name: 'Fetch data', icon: 'crop_7_5', subMenus: [] },
-      { state: 'about/counter', type: 'link', name: 'Counter', icon: 'crop_7_5', subMenus: [] },
+    state: 'bpm', type: 'link', name: 'BPM', icon: 'view_comfy', subMenus: [
       { state: 'bpm/bpmn-modeler', type: 'link', name: 'BPMN', icon: 'tab', subMenus: [] },
       { state: 'bpm/dmn-modeler', type: 'link', name: 'DMN', icon: 'crop_7_5', subMenus: [] },
-      { state: 'entities', type: 'link', name: 'Entities', icon: 'view_headline', subMenus: [] },
-      { state: 'login', type: 'link', name: 'Login', icon: 'view_list', subMenus: [] },
+    ]
+  },
+  {
+    state: 'shop', type: 'link', name: 'Shop', icon: 'view_comfy', subMenus: [
       { state: 'shop', type: 'link', name: 'Shop', icon: 'view_comfy', subMenus: [] },
       { state: 'shop/products', type: 'link', name: 'Products', icon: 'web', subMenus: [] },
+    ]
+  },
+  {
+    state: 'about', type: 'link', name: 'About', icon: 'view_comfy', subMenus: [
+      { state: 'about/counter', type: 'link', name: 'Counter', icon: 'view_list', subMenus: [] },
+      { state: 'home/background', type: 'link', name: 'Background', icon: 'view_headline', subMenus: [] },
+    ]
+  },
+  {
+    state: 'modules', type: 'link', name: 'Modules', icon: 'view_comfy', subMenus: [
+      { state: 'material/fetch-data', type: 'link', name: 'Fetch data', icon: 'crop_7_5', subMenus: [] },
+      { state: 'entities', type: 'link', name: 'Entities', icon: 'view_headline', subMenus: [] },
+      { state: 'login', type: 'link', name: 'Login', icon: 'view_list', subMenus: [] },
     ]
   },
   {

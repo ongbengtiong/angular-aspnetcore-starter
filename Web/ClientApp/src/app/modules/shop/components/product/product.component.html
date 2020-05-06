@@ -1,264 +1,258 @@
 <h3>{{title}}</h3>
 
 <div class="menu mat-elevation-z0">
-  <div class="content">
     <h4>Menu</h4>
 
     <ul>
-      <li *ngFor="let item of items">
-        <a (click)="scrollTo(item.id)" [ngClass]="{'focused': item.focus}">{{ item.label }} </a>
-      </li>
+        <li *ngFor="let item of items">
+            <a (click)="scrollTo(item.id)" [ngClass]="{'focused': item.focus}">{{ item.label }} </a>
+        </li>
     </ul>
-  </div>
 </div>
 
 <div id="area">
 
 
 
-  <form [formGroup]="entityForm">
-    <mat-accordion multi="true" mccScrollspyGroup="My Scrollspy" >
+    <form [formGroup]="entityForm">
+        <mat-accordion multi="true" mccScrollspyGroup="My Scrollspy">
 
 
 
-      <mat-expansion-panel mccScrollspyItem label="Product" class="mat-elevation-z0">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Product
-          </mat-panel-title>
-          <mat-panel-description>
-            Product Details
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+            <mat-expansion-panel mccScrollspyItem label="Product" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Product
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Product Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
 
-        <mat-tab-group>
-          <mat-tab label="Art">
-            <div class="container">
+                <mat-tab-group>
+                    <mat-tab label="Art">
+                        <div class="container">
 
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="id">ID:</label>
-                <div class="col-md-9">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="id">ID:</label>
+                                <div class="col-md-9">
 
-                  <mat-form-field><input [readonly]="isEdit" id="id" matInput formControlName="id" />
-                  </mat-form-field>
+                                    <mat-form-field><input [readonly]="isEdit" id="id" matInput formControlName="id" />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="category">category :</label>
+                                <div class="col-md-9">
+
+                                    <mat-form-field>
+
+                                        <mat-select formControlName="category">
+                                            <mat-option>
+                                                <ngx-mat-select-search [formControl]="filterCategoryCtrl" [placeholderLabel]="'MESSAGE_SEARCH'" [noEntriesFoundLabel]="'MESSAGE_NOTFOUND'">
+                                                </ngx-mat-select-search>
+                                            </mat-option>
+                                            <mat-option *ngIf="isCategoryLoading" class="is-Loading">
+                                                <mat-spinner diameter="50"></mat-spinner>
+                                            </mat-option>
+                                            <mat-option *ngFor="let item of filteredCategory" [value]="item.id">
+                                                {{item.displayName}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="checkError('category', 'required')">This field is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+
+
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="size">size :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field><input id="size" matInput formControlName="size" /> </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="price">price :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field>
+                                        <input id="price" type="number" matInput formControlName="price" />
+
+                                        <mat-error *ngIf="checkError('price', 'required')">This field is required</mat-error>
+                                        <mat-error *ngIf="checkError('price', 'min')">Min</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="title">title :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field><input id="title" matInput formControlName="title" /> </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="imageUrl">imageUrl :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field><input id="imageUrl" matInput formControlName="imageUrl" /> </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="artDating">artDating :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field><input id="artDating" matInput formControlName="artDating" /> </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+                    <mat-tab label="Art Description">
+                        <div class="container">
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="artDescription">Art Description :</label>
+                                <div class="col-md-9">
+                                    <mat-form-field>
+                                        <textarea id="artDescription" matInput formControlName="artDescription"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Art Description">
+                        <div class="container">
+
+                            <div class="row">
+                                <label class="col-md-3 col-form-label" for="file">File :</label>
+                                <div class="col-md-9">
+                                    <app-image-upload></app-image-upload>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+
+
+
+
+
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel mccScrollspyItem label="Artist" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Artist
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Artist Details
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="container">
+
+                    <mat-button-toggle-group class="ruleActionOnOffButton" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle value="1">An</mat-button-toggle>
+                        <mat-button-toggle value="2">Aus</mat-button-toggle>
+                        <mat-button-toggle value="3">
+                            <mat-icon>format_align_center</mat-icon>
+                        </mat-button-toggle>
+
+                    </mat-button-toggle-group>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="artId">artId :</label>
+                        <div class="col-md-9">
+                            <mat-form-field><input id="artId" type="number" matInput formControlName="artId" /> </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="artist">Artist :</label>
+                        <div class="col-md-9">
+                            <mat-form-field><input id="artist" matInput formControlName="artist" /> </mat-form-field>
+                        </div>
+                    </div>
+                    <ng-container formGroupName="artistDates">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="artistBirthDate">Artist BirthDate :</label>
+                            <div class="col-md-9">
+                                <!--<mat-form-field><input id="artistBirthDate" matInput formControlName="artistBirthDate" />-->
+                                <mat-form-field>
+                                    <input type="text" placeholder="Datepicker" matInput formControlName="artistBirthDate" [matDatepicker]="artistBirthDatePicker">
+                                    <mat-datepicker-toggle matSuffix [for]="artistBirthDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #artistBirthDatePicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="artistDeathDate">Artist DeathDate :</label>
+                            <div class="col-md-9">
+                                <!--<mat-form-field><input id="artistDeathDate" matInput formControlName="artistDeathDate" />-->
+                                <mat-form-field>
+                                    <input type="text" placeholder="Datepicker" matInput formControlName="artistDeathDate" [matDatepicker]="artistDeathDatePicker" [errorStateMatcher]="datesCompareErrorMatcher">
+                                    <mat-datepicker-toggle matSuffix [for]="artistDeathDatePicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #artistDeathDatePicker></mat-datepicker>
+                                    <mat-error *ngIf="checkError('artistDates', 'datesCompare')">DeathDate should be later than BirthDate
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </ng-container>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="artistNationality">artistNationality :</label>
+                        <div class="col-md-9">
+                            <mat-form-field><input id="artistNationality" matInput formControlName="artistNationality" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="category">category :</label>
-                <div class="col-md-9">
-
-                  <mat-form-field>
-
-                    <mat-select formControlName="category">
-                      <mat-option>
-                        <ngx-mat-select-search [formControl]="filterCategoryCtrl" [placeholderLabel]="'MESSAGE_SEARCH'"
-                          [noEntriesFoundLabel]="'MESSAGE_NOTFOUND'">
-                        </ngx-mat-select-search>
-                      </mat-option>
-                      <mat-option *ngIf="isCategoryLoading" class="is-Loading">
-                        <mat-spinner diameter="50"></mat-spinner>
-                      </mat-option>
-                      <mat-option *ngFor="let item of filteredCategory" [value]="item.id">
-                        {{item.displayName}}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="checkError('category', 'required')">This field is required</mat-error>
-                  </mat-form-field>
-                </div>
 
 
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="size">size :</label>
-                <div class="col-md-9">
-                  <mat-form-field><input id="size" matInput formControlName="size" /> </mat-form-field>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="price">price :</label>
-                <div class="col-md-9">
-                  <mat-form-field>
-                    <input id="price" type="number" matInput formControlName="price" />
 
-                    <mat-error *ngIf="checkError('price', 'required')">This field is required</mat-error>
-                    <mat-error *ngIf="checkError('price', 'min')">Min</mat-error>
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="title">title :</label>
-                <div class="col-md-9">
-                  <mat-form-field><input id="title" matInput formControlName="title" /> </mat-form-field>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="imageUrl">imageUrl :</label>
-                <div class="col-md-9">
-                  <mat-form-field><input id="imageUrl" matInput formControlName="imageUrl" /> </mat-form-field>
-                </div>
-              </div>
+            </mat-expansion-panel>
 
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="artDating">artDating :</label>
-                <div class="col-md-9">
-                  <mat-form-field><input id="artDating" matInput formControlName="artDating" /> </mat-form-field>
+            <mat-expansion-panel mccScrollspyItem label="Artist2" class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Artist2
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Artist Details2
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="container">
+                    <div class="row">
+
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <br /><br /><br /><br /><br /><br /><br />
+                    </div>
+
                 </div>
-              </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <mat-divider></mat-divider>
+
+
+        <div class="row my-2">
+            <div class="col">
+                <button mat-raised-button type="button" [disabled]="!canSave()" class="btn btn-primary" (click)="save()">Save</button>
             </div>
-
-          </mat-tab>
-
-          <mat-tab label="Art Description">
-            <div class="container">
-
-              <div class="form-group row">
-                <label class="col-md-3 col-form-label" for="artDescription">Art Description :</label>
-                <div class="col-md-9">
-                  <mat-form-field>
-                    <textarea id="artDescription" matInput formControlName="artDescription"></textarea>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab label="Art Description">
-            <div class="container">
-
-              <div class="row">
-                <label class="col-md-3 col-form-label" for="file">File :</label>
-                <div class="col-md-9">
-                  <app-image-upload></app-image-upload>
-                </div>
-              </div>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-
-
-
-
-
-      </mat-expansion-panel>
-
-
-      <mat-expansion-panel mccScrollspyItem label="Artist" class="mat-elevation-z0">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Artist
-          </mat-panel-title>
-          <mat-panel-description>
-            Artist Details
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="container">
-
-          <mat-button-toggle-group class="ruleActionOnOffButton" name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle value="1">An</mat-button-toggle>
-            <mat-button-toggle value="2">Aus</mat-button-toggle>
-            <mat-button-toggle value="3">
-              <mat-icon>format_align_center</mat-icon>
-            </mat-button-toggle>
-
-          </mat-button-toggle-group>
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="artId">artId :</label>
-            <div class="col-md-9">
-              <mat-form-field><input id="artId" type="number" matInput formControlName="artId" /> </mat-form-field>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="artist">Artist :</label>
-            <div class="col-md-9">
-              <mat-form-field><input id="artist" matInput formControlName="artist" /> </mat-form-field>
-            </div>
-          </div>
-          <ng-container formGroupName="artistDates">
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="artistBirthDate">Artist BirthDate :</label>
-              <div class="col-md-9">
-                <!--<mat-form-field><input id="artistBirthDate" matInput formControlName="artistBirthDate" />-->
-                <mat-form-field>
-                  <input type="text" placeholder="Datepicker" matInput formControlName="artistBirthDate"
-                    [matDatepicker]="artistBirthDatePicker">
-                  <mat-datepicker-toggle matSuffix [for]="artistBirthDatePicker"></mat-datepicker-toggle>
-                  <mat-datepicker #artistBirthDatePicker></mat-datepicker>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 col-form-label" for="artistDeathDate">Artist DeathDate :</label>
-              <div class="col-md-9">
-                <!--<mat-form-field><input id="artistDeathDate" matInput formControlName="artistDeathDate" />-->
-                <mat-form-field>
-                  <input type="text" placeholder="Datepicker" matInput formControlName="artistDeathDate"
-                    [matDatepicker]="artistDeathDatePicker" [errorStateMatcher]="datesCompareErrorMatcher">
-                  <mat-datepicker-toggle matSuffix [for]="artistDeathDatePicker"></mat-datepicker-toggle>
-                  <mat-datepicker #artistDeathDatePicker></mat-datepicker>
-                  <mat-error *ngIf="checkError('artistDates', 'datesCompare')">DeathDate should be later than BirthDate
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-
-          </ng-container>
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label" for="artistNationality">artistNationality :</label>
-            <div class="col-md-9">
-              <mat-form-field><input id="artistNationality" matInput formControlName="artistNationality" />
-              </mat-form-field>
-            </div>
-          </div>
-
         </div>
+    </form>
 
 
-
-      </mat-expansion-panel>
-
-      <mat-expansion-panel mccScrollspyItem label="Artist2" class="mat-elevation-z0">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Artist2
-          </mat-panel-title>
-          <mat-panel-description>
-            Artist Details2
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="container">
-          <div class="row">
-
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br /><br />
-          </div>
-
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-
-    <mat-divider></mat-divider>
-
-
-    <div class="row my-2" >
-      <div class="col">
-        <button mat-raised-button type="button" [disabled]="!canSave()" class="btn btn-primary"
-          (click)="save()">Save</button>
-      </div>
+    <div>
+        {{ entityForm.valid }}
     </div>
-  </form>
-
-
-  <div>
-    {{ entityForm.valid }}
-  </div>
-  <div>
-    {{ entityForm.value | json }}
-  </div>
-</div> 
+    <div>
+        {{ entityForm.value | json }}
+    </div>
+</div>
