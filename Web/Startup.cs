@@ -3,6 +3,7 @@ using Domain.Core.Repositories;
 using Domain.Core.Security;
 using DSO.DotnetCore.Domain;
 using DSO.DotnetCore.Domain.Repositories;
+using DSO.DotnetCore.Web.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -73,6 +74,8 @@ namespace DSO.DotnetCore.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +109,9 @@ namespace DSO.DotnetCore.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+
+                // https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-3.1&tabs=visual-studio
+                endpoints.MapHub<ShopHub>("/signalr");
             });
 
             app.UseSpa(spa =>
@@ -117,7 +123,7 @@ namespace DSO.DotnetCore.Web
 
                 if (env.IsDevelopment())
                 {
-                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 59);  
+                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 59);
                     //spa.UseAngularCliServer(npmScript: "start");
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
