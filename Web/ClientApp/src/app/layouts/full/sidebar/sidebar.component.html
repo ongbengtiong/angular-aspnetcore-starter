@@ -8,29 +8,71 @@
     <!-- ============================================================== -->
     <!-- Profile - style you can find in header.scss -->
     <!-- ============================================================== -->
-    <div class="profile-text"><a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe <i class="ti-angle-down font-12 m-l-5"></i></a></div>
+    <div class="profile-text"><a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe <i
+                class="ti-angle-down font-12 m-l-5"></i></a></div>
     <mat-menu #sdprofile="matMenu" class="mymegamenu">
         <button mat-menu-item>
-            <mat-icon>settings</mat-icon> Settings </button>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
         <button mat-menu-item>
-            <mat-icon>account_box</mat-icon> Profile </button>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
         <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon> Disable notifications </button>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
         <button mat-menu-item>
-            <mat-icon>exit_to_app</mat-icon> Sign Out </button>
+            <mat-icon>exit_to_app</mat-icon> Sign Out
+        </button>
     </mat-menu>
 
 </div>
 <mat-nav-list appAccordion>
-    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" group="{{menuitem.state}}">
-        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
-            <mat-icon>{{ menuitem.icon }}</mat-icon>
-            <span class="navigation-item-label">{{ menuitem.name }}</span>
-            <span fxFlex></span>
-            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
-        </a>
 
 
+
+    <!-- https://stackblitz.com/edit/angular-side-nav-dynamic-expansive-menu?file=app%2Fsidenav-responsive-example.html -->
+    <span *ngFor="let menuItem of menuItems.getMenuitem()">
+        <span *ngIf="menuItem.subMenus && menuItem.subMenus.length > 0">
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <!-- Cabeceras del submenu -->
+                            <div fxLayout="row" fxLayoutAlign="space-between center">
+                                <mat-icon>{{menuItem.icon}}</mat-icon>
+                                {{menuItem.name}}
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <span *ngFor="let child of menuItem.subMenus">
+                        <mat-list-item appAccordionLink routerLinkActive="selected" group="{{child.state}}">
+                            <a class="" appAccordionToggle [routerLink]="getRoute(child)"
+                                *ngIf="child.type === 'link'">
+                                <mat-icon>{{ child.icon }}</mat-icon>
+                                <span class="navigation-item-label">{{ child.name }}</span>
+    <span fxFlex></span>
+    <span class="label label-{{ badge.type }}" *ngFor="let badge of child.badge">{{ badge.value }}</span>
+    </a>
     </mat-list-item>
+    </span>
+    </mat-expansion-panel>
+    </mat-accordion>
+    </span>
+    <ng-container *ngIf="!menuItem.subMenus || menuItem.subMenus.length === 0">
+        <mat-list-item appAccordionLink routerLinkActive="selected" group="{{menuItem.state}}">
+            <a class="" appAccordionToggle [routerLink]="['/', menuItem.state]" *ngIf="menuItem.type === 'link'">
+                <mat-icon>{{ menuItem.icon }}</mat-icon>
+                <span class="navigation-item-label">{{ menuItem.name }}</span>
+                <span fxFlex></span>
+                <span class="label label-{{ badge.type }}" *ngFor="let badge of menuItem.badge">{{ badge.value }}</span>
+            </a>
+
+
+        </mat-list-item>
+    </ng-container>
+    </span>
+
+
+
 
 </mat-nav-list>

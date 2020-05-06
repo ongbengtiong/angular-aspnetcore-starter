@@ -1,0 +1,18 @@
+.mat-expansion-panel-header {
+    padding: 0 8px !important;
+}
+
+.mat-expansion-panel-header mat-icon:not(.dd-icon) {
+    margin-right: 8px;
+}
+
+.mat-expansion-panel-header-title {
+    height: 45px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    display: flex;
+    font-size: 15px;
+    white-space: nowrap;
+    color: #607d8b;
+}

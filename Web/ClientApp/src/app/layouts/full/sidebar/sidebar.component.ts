@@ -11,11 +11,11 @@ import {
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import { SidebarService } from './sidebar.service';
-import { MenuItems } from 'src/app/shared/components/menu-items/menu-items';
+import { MenuItems, Menu } from 'src/app/shared/components/menu-items/menu-items';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: []
+  styleUrls: ['./sidebar.component.css']
 })
 export class AppSidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
@@ -36,5 +36,10 @@ export class AppSidebarComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
- 
+  getRoute(item: Menu): string[] {
+    
+    const routeArray = item.state.split('/');
+    return ['/', ...routeArray];
+  }
+
 }
