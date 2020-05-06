@@ -1,5 +1,3 @@
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { OverlayModule } from '@angular/cdk/overlay';
@@ -32,6 +30,20 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CdkTableModule } from '@angular/cdk/table';
+import { A11yModule } from '@angular/cdk/a11y';
+import { BidiModule } from '@angular/cdk/bidi';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { ObserversModule } from '@angular/cdk/observers';
+import { PlatformModule } from '@angular/cdk/platform';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatStepperModule } from '@angular/material/stepper';
 
 const materialModules = [
   CdkTreeModule,
@@ -63,7 +75,22 @@ const materialModules = [
   PortalModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  NgxMatSelectSearchModule
+  NgxMatSelectSearchModule,
+  MatDialogModule,
+  MatTooltipModule,
+  CdkTableModule,
+  A11yModule,
+  BidiModule,
+  CdkAccordionModule,
+  ObserversModule,
+  PlatformModule,
+  MatGridListModule,
+  MatProgressBarModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatSliderModule,
+  MatStepperModule,
+
 ];
 @NgModule({
   imports: [

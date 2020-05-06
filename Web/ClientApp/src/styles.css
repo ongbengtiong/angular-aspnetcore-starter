@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+}
+
+
+/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @font-face {
     font-family: 'MetricLight';
     src: url('/assets/fonts/metric/MetricLight.woff') format('woff');
@@ -16,16 +24,11 @@
     src: url('/assets/fonts/metric/MetricRegular.woff') format('woff');
 }
 
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
-}
+
 
 html,
 body {
-    min-height: 100%;
+    min-height: 100%; 
 }
 
 h1,
@@ -38,40 +41,26 @@ h6 {
 }
 
 
-/* Provide sufficient contrast against white background */
 
-.material-icons {
-    font-family: 'Material Icons';
-}
+ */
 
+
+/* 
 .container-fluid {
     padding-left: 0px !important;
     padding-right: 0px !important
-}
+} */
 
-.main-content {
+
+/* .main-content {
     width: 100%;
     xheight: calc(100vh - 75px);
     margin-bottom: 57px;
     padding: 3rem;
-}
+} */
 
-.sidenav_container.sidenav-open {
-    min-width: 250px !important;
-}
 
-.sidenav_container.sidenav-close {
-    min-width: 50px !important;
-}
-
-.sidenav-content.sidenav-open {
-    margin-left: 250px !important;
-}
-
-.sidenav-content.sidenav-close {
-    margin-left: 62px !important;
-}
-
+/* 
 a {
     color: #0366d6;
 }
@@ -94,10 +83,26 @@ html {
     html {
         font-size: 16px;
     }
-}
+} */
 
 
 /*****/
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
 
 
 /* https://stackoverflow.com/questions/20593224/how-do-i-remove-blue-selected-outline-on-buttons/20593333 */
@@ -117,3 +122,55 @@ button:focus {
 .mat-expansion-panel-header-title {
     font-size: 1.2rem;
 }
+
+
+/* Left sidenav style override*/
+
+
+/* https://dev.to/andreilm/angular-material-sidenav-component-with-icons-only-when-closed-324i */
+
+mat-sidenav:not(.mat-drawer-opened) {
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    width: 60px !important;
+    overflow: hidden;
+}
+
+mat-sidenav:not(.mat-drawer-opened) .navigation-item-label {
+    display: none !important;
+}
+
+mat-sidenav:not(.mat-drawer-opened) .profile-text {
+    display: none !important;
+}
+
+mat-sidenav:not(.mat-drawer-opened) .profile-img {
+    margin-left: 5px !important;
+}
+
+mat-sidenav:not(.mat-drawer-opened) .home-button {
+    display: none !important;
+}
+
+mat-sidenav-container mat-sidenav-content:not(.mat-drawer-opened) {
+    padding-left: 60px !important;
+}
+
+#snav .mat-list-item .mat-list-item-content {
+    padding: 0px 8px !important;
+}
+
+mat-sidenav::-webkit-scrollbar {
+    width: 0 !important
+}
+
+mat-sidenav.drawer-hide-on-close:not(.mat-drawer-opened) {
+    left: -240px;
+}
+
+mat-sidenav-container mat-sidenav-content.drawer-hide-on-close:not(.mat-drawer-opened) {
+    padding-left: 0px !important;
+}
+
+
+/** End ***/

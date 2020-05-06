@@ -1,11 +1,14 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #leftSidenav mode="side" opened>
     <app-left-bar></app-left-bar>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content" [ngClass]="onSideNavChange ? 'sidenav-open': 'sidenav-close'">
-    <!--[xonMainContentChange]="onSideNavChange ? 'open': 'close'"-->
-    <div class="main-content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    !--[xonMainContentChange]="onSideNavChange ? 'open': 'close'"--
+<div class="main-content">
+    <router-outlet></router-outlet>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<router-outlet></router-outlet>

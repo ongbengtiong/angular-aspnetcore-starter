@@ -1,7 +1,7 @@
 //import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppSettings } from './app.settings';
 import { appSettingsFactory } from './app.settings.factory';
@@ -19,16 +19,18 @@ import { catchError, map } from 'rxjs/operators';
 import { of, Observable, ObservableInput } from 'rxjs';
 import { ConfigService } from './shared/services/config.service';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EntityEffects } from './modules/entity/store/effect';
 import { LoginComponent } from './modules/home/components/login/login.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { MaterialPage } from './modules/home/pages/material/material.page';
-import { BrowserModule } from '@angular/platform-browser';
+import { FullComponent } from './layouts/full/full.component';
+import { AppHeaderComponent } from './layouts/full/header/header.component';
+import { SpinnerComponent } from './shared/components/spinner.component';
+import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -39,7 +41,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
             config.baseUrl = x.baseUrl;
             resolve(true);
           }),
-          catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
+          catchError((x: { status: number }): ObservableInput<{}> => {
             if (x.status !== 404) {
               resolve(false);
             }
@@ -55,51 +57,72 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
 @NgModule({
   declarations: [
     AppComponent,
-
+    FullComponent,
+    AppHeaderComponent,
+    SpinnerComponent,
+    AppSidebarComponent
   ],
   imports: [
     // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    
+
     BrowserAnimationsModule,
     RouterModule.forRoot([
-
       {
         path: '',
-        //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
-        component: HomePage, children: [
-          { path: '', component: BackgroundComponent },
-          { path: 'background', component: BackgroundComponent },
-          { path: 'fetch-data', component: FetchDataComponent },
-          { path: 'login', component: LoginComponent }
+        component: FullComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: '/dashboard',
+            pathMatch: 'full'
+          },
+          {
+            path: 'dashboard',
+            loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+          },
+          {
+            path: '',
+            loadChildren:
+              () => import('./modules/material-component/material.module').then(m => m.MaterialComponentsModule)
+          },
+          {
+            path: '',
+            //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+            component: HomePage, children: [
+              { path: '', component: BackgroundComponent },
+              { path: 'background', component: BackgroundComponent },
+              { path: 'fetch-data', component: FetchDataComponent },
+              { path: 'login', component: LoginComponent }
+            ]
+          },
+          {
+            path: 'material', component: MaterialPage, children: [
+              { path: '', component: BackgroundComponent },
+              { path: 'fetch-data', component: FetchDataComponent },
+            ]
+          },
+          {
+            path: 'about',
+            loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
+          },
+          {
+            path: 'bpm',
+            loadChildren: () => import('./modules/bpm/bpm.module').then(m => m.BpmModule)
+          },
+          {
+            path: 'entities',
+            loadChildren: () => import('./modules/entity/entity.module').then(m => m.EntityModule)
+          },
+
+          {
+            path: 'shop',
+            loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
+          },
+
+
+
         ]
-      },
-      {
-        path: 'material', component: MaterialPage, children: [
-          { path: '', component: BackgroundComponent },
-          { path: 'fetch-data', component: FetchDataComponent },
-        ]
-      },
-      {
-        path: 'about',
-        loadChildren: () => import('./modules/about/about.module').then(m => m.AboutModule)
-      },
-      {
-        path: 'bpm',
-        loadChildren: () => import('./modules/bpm/bpm.module').then(m => m.BpmModule)
-      },
-      {
-        path: 'entities',
-        loadChildren: () => import('./modules/entity/entity.module').then(m => m.EntityModule)
-      },
-
-      {
-        path: 'shop',
-        loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
-      },
-
-
-
-
+      }
     ]),
     HttpClientModule,
     FormsModule,
@@ -107,7 +130,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     SharedModule,
     MaterialModule,
     BsDropdownModule.forRoot(),
-
+    FlexLayoutModule,
     LayoutModule,
     HomeModule,
     /*  StoreModule.forRoot(reducers, {

@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './components/footer/footer.component'; 
+import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
 
 import { SidebarModule } from 'primeng/sidebar';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SideBarService } from './components/sidebar/sidebar.service';
-import { LeftBarService } from './components/left-bar/left-bar.service';
-import { LeftBarComponent } from './components/left-bar/left-bar.component';
 import { MaterialModule } from './material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileUploadService } from './services/file-upload.service';
+import { AccordionAnchorDirective, AccordionLinkDirective, AccordionDirective } from './components/accordion';
+import { MenuItems } from './components/menu-items/menu-items';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,20 +19,24 @@ import { FileUploadService } from './services/file-upload.service';
     MaterialModule
   ],
   declarations: [
-    HeaderComponent,
     FooterComponent,
-    SidebarComponent,
-    LeftBarComponent
+    AccordionAnchorDirective,
+    AccordionLinkDirective,
+    AccordionDirective
   ],
 
   exports: [
     CommonModule,
-    FormsModule, 
+    FormsModule,
     FooterComponent,
-    HeaderComponent,
-    SidebarComponent,
-    LeftBarComponent
+    AccordionAnchorDirective,
+    AccordionLinkDirective,
+    AccordionDirective
   ],
-  providers: [SideBarService, LeftBarService, FileUploadService]
+  providers: [FileUploadService, MenuItems,
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy
+    }]
 })
 export class SharedModule { }

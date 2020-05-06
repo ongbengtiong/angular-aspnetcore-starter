@@ -60,7 +60,7 @@ Use Angular Material Table:
 - https://blog.angular-university.io/angular-material-data-table/
 - https://medium.com/@smtshootnick/angular-material-table-with-ngrx-server-pagination-filtering-and-sorting-e156fbd8926a
 
-Use Material Sidebar: [done]
+Use Material Sidebar: [done] [obsolete]
 - https://stackblitz.com/edit/angular-wmkznw?file=src%2Fapp%2Fcomponents%2Fheader%2Fheader.component.html
 
 Material ScrollSpy [done]
@@ -69,6 +69,7 @@ Material ScrollSpy [done]
 Material Autocomplete Select
 - ngx-mat-select-search
 
+Changed to Angular Material Template: https://github.com/wrappixel/material-pro-angular-lite
 
 Flex Layout
 
