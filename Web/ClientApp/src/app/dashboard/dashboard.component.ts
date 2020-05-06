@@ -20,7 +20,7 @@ export interface Chart {
 	styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements AfterViewInit {
-	ngAfterViewInit() {}
+	ngAfterViewInit() { }
 
 	// Barchart
 	barChart1: Chart = {
@@ -46,7 +46,7 @@ export class DashboardComponent implements AfterViewInit {
 				'screen and (min-width: 640px)',
 				{
 					axisX: {
-						labelInterpolationFnc: function(
+						labelInterpolationFnc: function (
 							value: number,
 							index: number
 						): string {

@@ -1,22 +1,22 @@
-<h3>Shopping Cart</h3>
-<div>#/Items: {{ shopService.order.items.length }}</div>
+<div>
+    #/Items: {{ shopService.order.items.length }}</div>
 <div>Subtotal: {{ shopService.order.subtotal | currency:"USD":"symbol" }}</div>
 <table class="table table-sm table-hover">
-  <thead>
-    <tr>
-      <td>Product</td>
-      <td>#</td>
-      <td>$</td>
-      <td>Total</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let o of shopService.order.items">
-      <td>{{ o.productCategory }} - {{ o.productTitle }}</td>
-      <td>{{ o.quantity }}</td>
-      <td>{{ o.unitPrice | currency:"USD":"symbol" }}</td>
-      <td>{{ (o.unitPrice * o.quantity) | currency:"USD":"symbol" }}</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <td>Product</td>
+            <td>#</td>
+            <td>$</td>
+            <td>Total</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let o of shopService.order.items">
+            <td>{{ o.productCategory }} - {{ o.productTitle }}</td>
+            <td>{{ o.quantity }}</td>
+            <td>{{ o.unitPrice | currency:"USD":"symbol" }}</td>
+            <td>{{ (o.unitPrice * o.quantity) | currency:"USD":"symbol" }}</td>
+        </tr>
+    </tbody>
 </table>
 <button class="btn btn-success" *ngIf="shopService.order.items.length > 0" (click)="onCheckout()">Checkout</button>

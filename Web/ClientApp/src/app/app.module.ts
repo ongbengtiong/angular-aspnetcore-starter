@@ -31,6 +31,16 @@ import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { SpinnerComponent } from './shared/components/spinner.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { Title } from '@angular/platform-browser';
+import { AppTitleService } from './shared/services/app-title.service';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+ 
 
 export function load(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
   return (): Promise<boolean> => {
@@ -148,7 +158,8 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
     }),
 
     BsDatepickerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    PerfectScrollbarModule
   ],
   providers: [
     {
@@ -164,7 +175,15 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
         ConfigService
       ],
       multi: true
-    }],
+    },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    Title,
+    AppTitleService
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
