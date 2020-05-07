@@ -113,30 +113,16 @@ html {
     /* Left sidenav style override*/
     /* https://dev.to/andreilm/angular-material-sidenav-component-with-icons-only-when-closed-324i */
     
+    $sidenav-width: 240px;
+    $sidenav-iconmode-width: 60px;
     mat-sidenav mat-panel-title {
         /* Adjust the accordian menu look */
         padding-left: 16px !important;
     }
     
-    mat-sidenav:not(.mat-drawer-opened) {
-        /* Set width to 60px even when it's .mat-drawer-opened, for showing the icons */
-        transform: translate3d(0, 0, 0) !important;
-        visibility: visible !important;
-        width: 60px !important;
-        overflow: hidden;
-    }
-    
     mat-sidenav-content:not(.mat-drawer-opened) {
         /* Set padding to 60px even when it's .mat-drawer-opened, so as not to overlay the icons */
-        padding-left: 60px !important;
-    }
-    
-    mat-sidenav:not(.mat-drawer-opened) mat-panel-title,
-    mat-sidenav:not(.mat-drawer-opened) .mat-list-item .mat-list-item-content {
-        /* Adjust the accordian menu look */
-        /* Adjust the list item to look better when closed */
-        padding-left: 8px !important;
-        padding-right: 8px !important;
+        padding-left: $sidenav-iconmode-width !important;
     }
     
     mat-sidenav-content.drawer-hide-on-close:not(.mat-drawer-opened) {
@@ -144,35 +130,46 @@ html {
         padding-left: 0px !important;
     }
     
-    mat-sidenav:not(.mat-drawer-opened) .navigation-item-label,
-    mat-sidenav:not(.mat-drawer-opened) .profile-text,
-    mat-sidenav:not(.mat-drawer-opened) .home-button {
-        /* Don't show anything except for the icons */
-        display: none !important;
-    }
-    
-    mat-sidenav:not(.mat-drawer-opened) .profile-img {
-        /* Shift the profile image to the left if not opened */
-        margin-left: 5px !important;
-    }
-    
-    mat-sidenav:not(.mat-drawer-opened) .mat-expansion-panel-body {
-        /* Shift the submenu lists to the left to look better in icon-mode */
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-    }
-    
-    mat-sidenav:not(.mat-drawer-opened) .mat-expansion-panel-body mat-icon {
-        /* Shift the submenu lists to the left to look better in icon-mode */
-        font-size: small;
-        margin-right: 0px !important;
-        text-align: center;
-        height: fit-content;
-    }
-    
     mat-sidenav.drawer-hide-on-close:not(.mat-drawer-opened) {
         /* When the sidenav is closed but screen < 768px, hide the sidenav totally */
         /* Note: .drawer-hide-on-close is set when screen < 768px */
-        left: -240px;
+        left: -$sidenav-width;
+    }
+    
+    mat-sidenav:not(.mat-drawer-opened) {
+        /* Set width to 60px even when it's .mat-drawer-opened, for showing the icons */
+        transform: translate3d(0, 0, 0) !important;
+        visibility: visible !important;
+        width: $sidenav-iconmode-width !important;
+        overflow: hidden;
+        mat-panel-title,
+        .mat-list-item .mat-list-item-content {
+            /* Adjust the accordian menu look */
+            /* Adjust the list item to look better in icon-mode */
+            padding-left: 8px !important;
+            padding-right: 8px !important;
+        }
+        .navigation-item-label,
+        .profile-text,
+        .home-button {
+            /* Don't show anything except for the icons */
+            display: none !important;
+        }
+        .profile-img {
+            /* Shift the profile image to the left in icon-mode */
+            margin-left: 5px !important;
+        }
+        .mat-expansion-panel-body {
+            /* Shift the submenu lists to the left to look better in icon-mode */
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+        .mat-expansion-panel-body mat-icon {
+            /* Shift the submenu lists to the left to look better in icon-mode */
+            font-size: small;
+            margin-right: 0px !important;
+            text-align: center;
+            height: fit-content;
+        }
     }
     /** End ***/
