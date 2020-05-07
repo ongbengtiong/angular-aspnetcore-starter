@@ -11,6 +11,7 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <RootNamespace>DSO.DotnetCore.Web</RootNamespace>
+    <UserSecretsId>b0d45841-9e6d-468c-8c56-dec7dd3d4804</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

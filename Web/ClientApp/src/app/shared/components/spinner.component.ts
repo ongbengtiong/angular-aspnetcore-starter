@@ -16,7 +16,7 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-spinner',
-  template: `<div class="preloader" *ngIf="isSpinnerVisible">
+  template: `<div class="preloader" style="background-color: rgba(0, 0, 0, 0.5)" *ngIf="isSpinnerVisible">
         <div class="spinner">
           <div class="double-bounce1"></div>
           <div class="double-bounce2"></div>

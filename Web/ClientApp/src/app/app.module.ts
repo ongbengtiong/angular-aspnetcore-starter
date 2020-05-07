@@ -27,15 +27,17 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { MaterialPage } from './modules/home/pages/material/material.page';
 import { FullComponent } from './layouts/full/full.component';
-import { AppHeaderComponent } from './layouts/full/header/header.component';
+import { HeaderComponent as HeaderComponent } from './layouts/full/header/header.component';
 import { SpinnerComponent } from './shared/components/spinner.component';
-import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
+import { SidebarComponent as SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { Title } from '@angular/platform-browser';
 import { AppTitleService } from './shared/services/app-title.service';
+import { FooterComponent } from './layouts/full/footer/footer.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -68,9 +70,10 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
   declarations: [
     AppComponent,
     FullComponent,
-    AppHeaderComponent,
+    HeaderComponent,
     SpinnerComponent,
-    AppSidebarComponent
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

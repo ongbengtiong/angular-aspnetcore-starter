@@ -62,7 +62,7 @@
         <!-- ============================================================== -->
         <!-- Page container - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <mat-sidenav-content class="page-wrapper" [ngClass]="{'mat-drawer-opened': sideBarState, 'drawer-hide-on-close': !mobileQuery.matches}">
+        <mat-sidenav-content fxLayout="column" class="page-wrapper" [ngClass]="{'mat-drawer-opened': sideBarState, 'drawer-hide-on-close': !mobileQuery.matches}">
             <mat-toolbar>
                 <mat-toolbar-row>
                     <span>{{title}}</span>
@@ -75,7 +75,7 @@
                 </router-outlet>
 
             </div>
-
+            <app-footer fxFlexOffset="auto"></app-footer>
         </mat-sidenav-content>
         <!-- ============================================================== -->
         <!-- Page container - style you can find in pages.scss -->

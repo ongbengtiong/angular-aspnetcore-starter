@@ -17,7 +17,7 @@ import { MenuItems, Menu } from 'src/app/shared/components/menu-items/menu-items
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class AppSidebarComponent implements OnDestroy {
+export class SidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;

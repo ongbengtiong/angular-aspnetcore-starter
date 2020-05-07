@@ -69,7 +69,10 @@ Material ScrollSpy [done]
 Material Autocomplete Select
 - ngx-mat-select-search
 
-Changed to Angular Material Template: https://github.com/wrappixel/material-pro-angular-lite
+Change to Angular Material Template [done]
+https://github.com/wrappixel/material-pro-angular-lite
 
 Flex Layout
 
+Add Perfect Scrollbar [done]
+https://www.npmjs.com/package/ngx-perfect-scrollbar

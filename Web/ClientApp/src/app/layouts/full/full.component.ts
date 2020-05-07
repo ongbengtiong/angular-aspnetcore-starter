@@ -1,20 +1,13 @@
-import * as $ from 'jquery';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Router } from '@angular/router';
 import {
   ChangeDetectorRef,
   Component,
-  NgZone,
   OnDestroy,
   ViewChild,
-  HostListener,
-  Directive,
   AfterViewInit,
   OnInit
 } from '@angular/core';
 
-import { AppHeaderComponent } from './header/header.component';
-import { AppSidebarComponent } from './sidebar/sidebar.component';
 import { SidebarService } from './sidebar/sidebar.service';
 import { MenuItems } from 'src/app/shared/components/menu-items/menu-items';
 import { Title } from '@angular/platform-browser';
@@ -38,7 +31,6 @@ export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     public menuItems: MenuItems,
-    private sidebarService: SidebarService,
     public titleService: Title,
     private appTitleService: AppTitleService
   ) {
