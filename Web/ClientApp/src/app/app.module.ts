@@ -1,4 +1,4 @@
-//import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -37,6 +37,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { Title } from '@angular/platform-browser';
 import { AppTitleService } from './shared/services/app-title.service';
 import { FooterComponent } from './layouts/full/footer/footer.component';
+import { PageNotFoundComponent } from './layouts/page-not-found/page-not-found.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -100,7 +101,7 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
           },
           {
             path: 'home',
-            //loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+            // loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
             component: HomePage, children: [
               { path: '', component: BackgroundComponent },
               { path: 'background', component: BackgroundComponent },
@@ -135,7 +136,11 @@ export function load(http: HttpClient, config: ConfigService): (() => Promise<bo
 
 
         ]
-      }
+      },
+      {
+        path: '404',
+        component: PageNotFoundComponent
+    }
     ]),
     HttpClientModule,
     FormsModule,
