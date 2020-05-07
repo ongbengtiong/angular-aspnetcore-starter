@@ -7,12 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from './../../shared/shared.module';
-import { AboutPage} from './pages/about/about.page';
+import { AboutPage } from './pages/about/about.page';
 import { CounterComponent } from './components/counter/counter.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RouterModule, Routes } from '@angular/router';
+import { ScrollspyExamplesComponent } from './components/scrollspy-example/scrollspy-example.component';
+import { MccScrollspyModule } from 'material-community-components';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 
 const routes: Routes = [
@@ -20,6 +23,7 @@ const routes: Routes = [
     path: '', component: AboutPage, children: [
       { path: '', component: IntroComponent },
       { path: 'counter', component: CounterComponent },
+      { path: 'scrollspy', component: ScrollspyExamplesComponent },
     ]
   }
 ];
@@ -29,14 +33,17 @@ const routes: Routes = [
   declarations: [
     AboutPage,
     CounterComponent,
-    IntroComponent
+    IntroComponent,
+    ScrollspyExamplesComponent
   ],
   imports: [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     SharedModule,
     BsDropdownModule,
-    LayoutModule
+    LayoutModule,
+    MccScrollspyModule,
+    MaterialModule
   ],
   entryComponents: [
 

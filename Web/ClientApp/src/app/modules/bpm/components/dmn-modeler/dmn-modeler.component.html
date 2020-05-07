@@ -1,21 +1,22 @@
 <h3>DMN Modeler</h3>
 
+<mat-card>
+    <mat-card-content>
+        <button type="button" class="btn btn-primary" (click)="new()">New <fa-icon [icon]="faFolderOpen"></fa-icon></button>
+        <button type="button" class="btn btn-primary" (click)="load()">Load <fa-icon [icon]="faFolderOpen"></fa-icon>
+      </button>
+        <button type="button" class="btn btn-primary" (click)="save()">Save <fa-icon [icon]="faSave"></fa-icon> </button>
 
-<style>
- 
-</style>
-<button type="button" class="btn btn-primary" (click)="new()">New <fa-icon [icon]="faFolderOpen"></fa-icon></button>
-<button type="button" class="btn btn-primary" (click)="load()">Load <fa-icon [icon]="faFolderOpen"></fa-icon></button>
-<button type="button" class="btn btn-primary" (click)="save()">Save <fa-icon [icon]="faSave"></fa-icon> </button>
- 
-<div class="d-md-flex h-md-100 align-items-start">
+        <div class="d-md-flex h-md-100 align-items-start">
 
-  <!-- First Half -->
+            <!-- First Half -->
 
-  <div class="col-md-12 p-0 bg-indigo h-md-100">
+            <div class="col-md-12 p-0 bg-indigo h-md-100">
 
-    <div id="canvas" class="border"></div>
+                <div id="canvas" class="border"></div>
 
-  </div> 
+            </div>
 
-</div>
+        </div>
+    </mat-card-content>
+</mat-card>
