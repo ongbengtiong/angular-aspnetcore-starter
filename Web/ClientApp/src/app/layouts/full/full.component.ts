@@ -23,8 +23,8 @@ import { AppTitleService } from 'src/app/shared/services/app-title.service';
 /** @title Responsive sidenav */
 @Component({
   selector: 'app-full-layout',
-  templateUrl: 'full.component.html',
-  styleUrls: []
+  templateUrl: './full.component.html',
+  styleUrls: ['./full.component.css']
 })
 export class FullComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('snav') snav: any;

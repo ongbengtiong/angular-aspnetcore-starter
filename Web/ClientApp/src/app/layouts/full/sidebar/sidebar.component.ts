@@ -36,8 +36,11 @@ export class AppSidebarComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  // Need to do this as the [routerLink] does not take in URl like 'aaa/bbb' 
+  // It will URLEncode the url causing slashes to be replaced with %2F.  
+  // So we return a array instead
   getRoute(item: Menu): string[] {
-    
     const routeArray = item.state.split('/');
     return ['/', ...routeArray];
   }

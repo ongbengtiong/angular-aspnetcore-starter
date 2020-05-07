@@ -37,43 +37,43 @@ const MENUITEMS = [
   },
   {
     state: 'components', type: 'link', name: 'Components', icon: 'crop_7_5', subMenus: [
-      { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5', subMenus: [] },
-      { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy', subMenus: [] },
-      { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list', subMenus: [] },
-      { state: 'menu', type: 'link', name: 'Menu', icon: 'view_headline', subMenus: [] },
-      { state: 'tabs', type: 'link', name: 'Tabs', icon: 'tab', subMenus: [] },
-      { state: 'stepper', type: 'link', name: 'Stepper', icon: 'web', subMenus: [] },
+      { state: 'components/button', type: 'link', name: 'Buttons', icon: 'crop_7_5', subMenus: [] },
+      { state: 'components/grid', type: 'link', name: 'Grid List', icon: 'view_comfy', subMenus: [] },
+      { state: 'components/lists', type: 'link', name: 'Lists', icon: 'view_list', subMenus: [] },
+      { state: 'components/menu', type: 'link', name: 'Menu', icon: 'view_headline', subMenus: [] },
+      { state: 'components/tabs', type: 'link', name: 'Tabs', icon: 'tab', subMenus: [] },
+      { state: 'components/stepper', type: 'link', name: 'Stepper', icon: 'web', subMenus: [] },
       {
-        state: 'expansion',
+        state: 'components/expansion',
         type: 'link',
         name: 'Expansion Panel',
         icon: 'vertical_align_center', subMenus: []
       },
-      { state: 'chips', type: 'link', name: 'Chips', icon: 'vignette', subMenus: [] },
-      { state: 'toolbar', type: 'link', name: 'Toolbar', icon: 'voicemail', subMenus: [] },
+      { state: 'components/chips', type: 'link', name: 'Chips', icon: 'vignette', subMenus: [] },
+      { state: 'components/toolbar', type: 'link', name: 'Toolbar', icon: 'voicemail', subMenus: [] },
       {
-        state: 'progress-snipper',
+        state: 'components/progress-snipper',
         type: 'link',
         name: 'Progress snipper',
         icon: 'border_horizontal', subMenus: []
       },
       {
-        state: 'progress',
+        state: 'components/progress',
         type: 'link',
         name: 'Progress Bar',
         icon: 'blur_circular', subMenus: []
       },
       {
-        state: 'dialog',
+        state: 'components/dialog',
         type: 'link',
         name: 'Dialog',
         icon: 'assignment_turned_in', subMenus: []
       },
-      { state: 'tooltip', type: 'link', name: 'Tooltip', icon: 'assistant', subMenus: [] },
-      { state: 'snackbar', type: 'link', name: 'Snackbar', icon: 'adb', subMenus: [] },
-      { state: 'slider', type: 'link', name: 'Slider', icon: 'developer_mode', subMenus: [] },
+      { state: 'components/tooltip', type: 'link', name: 'Tooltip', icon: 'assistant', subMenus: [] },
+      { state: 'components/snackbar', type: 'link', name: 'Snackbar', icon: 'adb', subMenus: [] },
+      { state: 'components/slider', type: 'link', name: 'Slider', icon: 'developer_mode', subMenus: [] },
       {
-        state: 'slide-toggle',
+        state: 'components/slide-toggle',
         type: 'link',
         name: 'Slide Toggle',
         icon: 'all_inclusive', subMenus: []
